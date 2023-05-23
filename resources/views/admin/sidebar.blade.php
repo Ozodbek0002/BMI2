@@ -72,8 +72,8 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
 
-        <li class="menu-item {{ Route::is('admin.') ? 'active' : '' }}">
-{{--            <a href="{{route('admin.dashboard')}}" class="menu-link">--}}
+        <li class="menu-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
+            <a href="{{route('admin.dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-line-chart"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -81,25 +81,31 @@
 
         @if (Auth::user()->role_id == 1)
 
+            <li class="menu-item {{ Route::is('admin.') ? 'active' : '' }}">
+                <a href="{{route('admin.users')}}" class="menu-link ">
+                    <i class="menu-icon tf-icons bx bx-link-external"></i>
+                    <div data-i18n="Tables"> Qishloqlar </div>
+                </a>
+            </li>
+
+         <li class="menu-item {{ Route::is('admin.') ? 'active' : '' }}">
+                <a href="{{route('admin.users')}}" class="menu-link ">
+                    <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                    <div data-i18n="Tables"> Mahallalar </div>
+                </a>
+            </li>
 
 
 
-        <li class="menu-item {{ Route::is('admin.') ? 'active' : '' }}">
-{{--            <a href="{{route('admin.users')}}" class="menu-link ">--}}
-                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
-                <div data-i18n="Tables"> Hodimlar</div>
-{{--            </a>--}}
-        </li>
-
+            <li class="menu-item {{ Route::is('admin.users') ? 'active' : '' }}">
+                <a href="{{route('admin.users')}}" class="menu-link ">
+                    <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                    <div data-i18n="Tables"> Hodimlar </div>
+                </a>
+            </li>
 
 
         @endif
-
-
-
-
-
-
 
 
 

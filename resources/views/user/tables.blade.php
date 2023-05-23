@@ -4,7 +4,7 @@
 
     <!-- Page Header Start -->
     <div class="container"><br>
-
+        <h2> AAA mahalla passporti  </h2>
 
         <table class="table table-bordered">
             <h4 class="text-center">Mahalla fuqarolar yig'ini xodimlari va jamoatchilik tuzilmalari to'g'risida ma'lumot</h4>
