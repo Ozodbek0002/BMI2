@@ -7,6 +7,10 @@ use App\Http\Controllers\{
     UserController,
     SearchController,
     AdminController,
+    VillageController,
+    MahallaController,
+    InformationsController,
+
 };
 
 
@@ -22,7 +26,10 @@ Route::get('/mahallalar', [RouteController::class,'mahallalar'])->name('mahallal
 
 Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
 Route::get('/', [AdminController::class,'dashboard'])->name('dashboard');
+Route::resource('villages', VillageController::class)->name('index', 'villages');
+Route::resource('mahallas', MahallaController::class)->name('index', 'mahallas');
 Route::resource('users', UserController::class)->name('index', 'users');
+Route::resource('informations', InformationsController::class)->name('index', 'informations');
 
 
 Route::post('SearchUsers',[SearchController::class, 'SearchUsers'])->name('SearchUsers');

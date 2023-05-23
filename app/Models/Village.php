@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Village extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+    ];
+
+    public function mahallas()
+    {
+        return $this->hasMany(Mahalla::class);
+    }
 }

@@ -23,23 +23,16 @@ class User extends Authenticatable
         'password',
         'phone',
         'role_id',
+        'mahalla_id',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
@@ -50,5 +43,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function mahalla()
+    {
+        return $this->belongsTo(Mahalla::class);
+    }
+
 
 }

@@ -6,15 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
-        Schema::create('mahallas', function (Blueprint $table) {
+        Schema::create('informations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('village_id')->constrained('villages')->onDelete('cascade');
+            $table->string('position');
+            $table->string('address');
+            $table->string('phone');
+            $table->foreignId('mahalla_id')->constrained('mahallas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mahallas');
+        Schema::dropIfExists('informations');
     }
 };

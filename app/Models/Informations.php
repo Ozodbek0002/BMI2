@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mahalla extends Model
+class Informations extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'village_id'
+        'position',
+        'address',
+        'phone',
+        'mahalla_id',
     ];
-
-    public function village()
-    {
-        return $this->belongsTo(Village::class);
-    }
-
 }
