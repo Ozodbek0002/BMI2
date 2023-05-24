@@ -81,15 +81,15 @@
 
         @if (Auth::user()->role_id == 1)
 
-            <li class="menu-item {{ Route::is('admin.') ? 'active' : '' }}">
-                <a href="{{route('admin.users')}}" class="menu-link ">
+            <li class="menu-item {{ Route::is('admin.villages') ? 'active' : '' }}">
+                <a href="{{route('admin.villages')}}" class="menu-link ">
                     <i class="menu-icon tf-icons bx bx-link-external"></i>
                     <div data-i18n="Tables"> Qishloqlar </div>
                 </a>
             </li>
 
-         <li class="menu-item {{ Route::is('admin.') ? 'active' : '' }}">
-                <a href="{{route('admin.users')}}" class="menu-link ">
+         <li class="menu-item {{ Route::is('admin.mahallas') ? 'active' : '' }}">
+                <a href="{{route('admin.mahallas')}}" class="menu-link ">
                     <i class="menu-icon tf-icons bx bxl-unsplash"></i>
                     <div data-i18n="Tables"> Mahallalar </div>
                 </a>
@@ -106,6 +106,56 @@
 
 
         @endif
+
+
+        <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
+            <a href="{{route('admin.informations')}}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                <div data-i18n="Tables"> Ma'lumotlari </div>
+            </a>
+        </li>
+
+
+
+        <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
+            <a href="{{route('admin.informations')}}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                <div data-i18n="Tables"> Aholi bandligi </div>
+            </a>
+        </li>
+
+
+        <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
+            <a href="{{route('admin.informations')}}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                <div data-i18n="Tables"> Ijtimoiy holati </div>
+            </a>
+        </li>
+
+
+         <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
+            <a href="{{route('admin.informations')}}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                <div data-i18n="Tables"> Ko'rsatgichlari </div>
+            </a>
+        </li>
+
+         <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
+            <a href="{{route('admin.informations')}}" class="menu-link ">
+                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                <div data-i18n="Tables"> Ma'naviy muhiti </div>
+            </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
 
 
 

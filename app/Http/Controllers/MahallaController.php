@@ -8,12 +8,16 @@ use App\Http\Requests\UpdateMahallaRequest;
 
 class MahallaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $mahallas = Mahalla::paginate(10);
+
+        return view('admin.mahallas.index', [
+            'mahallas'=>$mahallas,
+        ]);
+
+
     }
 
     /**

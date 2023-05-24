@@ -10,10 +10,15 @@ class Informations extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'full_name',
         'position',
         'address',
         'phone',
         'mahalla_id',
     ];
+
+    public function mahalla()
+    {
+        return $this->belongsTo(Mahalla::class);
+    }
 }

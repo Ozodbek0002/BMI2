@@ -8,12 +8,14 @@ use App\Http\Requests\UpdateVillageRequest;
 
 class VillageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $villages = Village::paginate(10);
+
+        return view('admin.villages.index', [
+            'villages'=>$villages,
+        ]);
     }
 
     /**

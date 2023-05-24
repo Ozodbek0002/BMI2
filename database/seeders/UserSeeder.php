@@ -9,9 +9,7 @@ use App\Models\User;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+
     public function run(): void
     {
         $user = User::create([
@@ -20,6 +18,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin001'),
             'phone' => '912770919',
             'role_id' => 1,
+            'mahalla_id' => 1,
             ]);
 
         $user = User::create([
@@ -28,6 +27,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('mahalla001'),
             'phone' => '912770919',
             'role_id' => 2,
+            'mahalla_id' => 1,
             ]);
 
     }
