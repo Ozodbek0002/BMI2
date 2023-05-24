@@ -8,28 +8,28 @@
 
                 <div class="row ">
 
-                    <div class="col-md-3"><h1 class="card-title"> Hodimlar </h1></div>
+                    <div class="col-md-3"><h1 class="card-title"> Ko`rsatgichlar </h1></div>
 
                     <div class="col-md-6">
 
-                        <form action="{{ route('admin.SearchUsers') }}" method="post">
-                            @csrf
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control" placeholder="Qidirish...">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </form>
+                        {{--                        <form action="{{ route('admin.SearchUsers') }}" method="post">--}}
+                        {{--                            @csrf--}}
+                        {{--                            <div class="input-group">--}}
+                        {{--                                <input type="text" name="search" class="form-control" placeholder="Qidirish...">--}}
+                        {{--                                <button class="btn btn-primary" type="submit">--}}
+                        {{--                                    <i class="fa fa-search"></i>--}}
+                        {{--                                </button>--}}
+                        {{--                            </div>--}}
+                        {{--                        </form>--}}
 
                     </div>
 
                     <div class="col-md-3">
-                        <a class="btn btn-primary" href="{{route('admin.users.create')}}">
+                        <a class="btn btn-primary" href="{{route('admin.indicators.create')}}">
                             <span class="btn-label">
                                 <i class="fa fa-plus"></i>
                             </span>
-                            Hodim qo'shish
+                            Ko`rsatgich qo'shish
                         </a>
                     </div>
 
@@ -43,85 +43,72 @@
                         <thead>
                         <tr>
                             <th class="" scope="col">T/R</th>
-                            <th class="" scope="col"> Ism Familiyasi </th>
-                            <th class="" scope="col"> Lavozimi </th>
-                            <th class="" scope="col"> Telefon raqami </th>
+                            <th class="" scope="col"> Mahallasi</th>
+                            <th class="" scope="col"> Nomi</th>
+                            <th class="" scope="col"> Umumiy Soni</th>
+                            <th class="" scope="col"> Ayollar Soni</th>
                             <th class="" scope="col"> Amallar</th>
 
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($users as $ind=>$user)
+                        @foreach($indicators as $ind=>$indicator)
                             <tr>
-                                                                <td class="col-1">{{($users->currentpage()-1)*($users->perpage())+$ind+1}}</td>
+                                <td class="col-1">{{($indicators->currentpage()-1)*($indicators->perpage())+$ind+1}}</td>
 
-{{--                                <td class="col-1">{{ $ind+1 }}</td>--}}
+                                <td>{{ $indicator->mahalla->name  }}</td>
 
-                                <td>{{ $user->name  }}</td>
+                                <td>{{ $indicator->title}}</td>
 
-                                <td>{{ $user->role->name }}</td>
+                                <td>{{ $indicator->count }}</td>
 
-                                <td>{{ $user->phone }}</td>
-
-                                <td>{{ $user->email }}</td>
-
+                                <td>{{ $indicator->w_count }}</td>
 
 
                                 <td class="col-2">
 
 
-                                    @if($user->id != 1)
-
-                                        <a class="btn btn-success btn-sm" href="{{ route('admin.users.show',$user->id) }}">
+                                    <a class="btn btn-success btn-sm"
+                                       href="{{ route('admin.indicators.show',$indicator->id) }}">
                                             <span class="btn-label">
                                                   <i class="bx bxs-show"></i>
                                             </span>
-                                        </a>
-
-                                    @endif
+                                    </a>
 
 
-                                    @if( auth()->user()->id ==1 )
-
-                                        <a class="btn btn-warning btn-sm"
-                                           href="{{ route('admin.users.edit',$user->id) }}">
+                                    <a class="btn btn-warning btn-sm"
+                                       href="{{ route('admin.indicators.edit',$indicator->id) }}">
                                             <span class="btn-label">
                                                 <i class="bx bx-pen"></i>
                                             </span>
-                                        </a>
+                                    </a>
 
 
-                                        @if($user->id!=1)
-
-                                            <button data-bs-toggle="modal" data-bs-target="#deleteModal{{$user->id}}"
-                                                    type="button" class="btn btn-danger  btn-sm">
+                                    <button data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal{{$indicator->id}}"
+                                            type="button" class="btn btn-danger  btn-sm">
                                                 <span class="btn-label">
                                                     <i class="bx bx-trash"></i>
                                                 </span>
-                                            </button>
-
-                                        @endif
-
-                                    @endif
-
-
+                                    </button>
 
 
                                     {{-- Delete  Modals--}}
-                                    <div class="modal fade" id="deleteModal{{$user->id}}" tabindex="-1"
+                                    <div class="modal fade" id="deleteModal{{$indicator->id}}" tabindex="-1"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-3" id="exampleModalLabel">Haqiqatdan ham
-                                                        ushbu Hodimni
+                                                        ushbu Ko`rsatgichni
                                                         o'chirib tashlamoqchimisiz ?</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                 </div>
 
-                                                <form action="{{route('admin.users.destroy',$user->id)}}" method="post">
+                                                <form action="{{route('admin.indicators.destroy',$indicator->id)}}"
+                                                      method="post">
                                                     @csrf
                                                     @method('DELETE')
 
@@ -146,17 +133,17 @@
 
                     </table>
 
-                                        <div class="container">
-                                            <div class="row justify-content-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
 
-                                                @if ($users->links())
-                                                    <div class="mt-4 p-4 box has-text-centered">
-                                                        {{ $users->links() }}
-                                                    </div>
-                                                @endif
+                            @if ($indicators->links())
+                                <div class="mt-4 p-4 box has-text-centered">
+                                    {{ $indicators->links() }}
+                                </div>
+                            @endif
 
-                                            </div>
-                                        </div>
+                        </div>
+                    </div>
 
 
                 </div>

@@ -83,14 +83,14 @@
 
             <li class="menu-item {{ Route::is('admin.villages') ? 'active' : '' }}">
                 <a href="{{route('admin.villages')}}" class="menu-link ">
-                    <i class="menu-icon tf-icons bx bx-link-external"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 15V9h-6V3l-3-3l-3 3v2H3v10h18m-2-2h-2v-2h2v2m-8-8V3h2v2h-2m0 4V7h2v2h-2m0 4v-2h2v2h-2M7 9H5V7h2v2m0 4H5v-2h2v2m2 4v2h6v-2l3 3l-3 3v-2H9v2l-3-3l3-3Z"/></svg>
                     <div data-i18n="Tables"> Qishloqlar </div>
                 </a>
             </li>
 
          <li class="menu-item {{ Route::is('admin.mahallas') ? 'active' : '' }}">
                 <a href="{{route('admin.mahallas')}}" class="menu-link ">
-                    <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M0 21V10l7.5-5l7.5 5v11h-5v-7H5v7H0M24 2v19h-7V8.93l-1-.66V6h-2v.93l-4-2.66V2h14m-3 12h-2v2h2v-2m0-4h-2v2h2v-2m0-4h-2v2h2V6Z"/></svg>
                     <div data-i18n="Tables"> Mahallalar </div>
                 </a>
             </li>
@@ -99,7 +99,7 @@
 
             <li class="menu-item {{ Route::is('admin.users') ? 'active' : '' }}">
                 <a href="{{route('admin.users')}}" class="menu-link ">
-                    <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5a3.5 3.5 0 0 0-3.5 3.5A3.5 3.5 0 0 0 12 12a3.5 3.5 0 0 0 3.5-3.5A3.5 3.5 0 0 0 12 5m0 2a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 12 10a1.5 1.5 0 0 1-1.5-1.5A1.5 1.5 0 0 1 12 7M5.5 8A2.5 2.5 0 0 0 3 10.5c0 .94.53 1.75 1.29 2.18c.36.2.77.32 1.21.32c.44 0 .85-.12 1.21-.32c.37-.21.68-.51.91-.87A5.42 5.42 0 0 1 6.5 8.5v-.28c-.3-.14-.64-.22-1-.22m13 0c-.36 0-.7.08-1 .22v.28c0 1.2-.39 2.36-1.12 3.31c.12.19.25.34.4.49a2.482 2.482 0 0 0 1.72.7c.44 0 .85-.12 1.21-.32c.76-.43 1.29-1.24 1.29-2.18A2.5 2.5 0 0 0 18.5 8M12 14c-2.34 0-7 1.17-7 3.5V19h14v-1.5c0-2.33-4.66-3.5-7-3.5m-7.29.55C2.78 14.78 0 15.76 0 17.5V19h3v-1.93c0-1.01.69-1.85 1.71-2.52m14.58 0c1.02.67 1.71 1.51 1.71 2.52V19h3v-1.5c0-1.74-2.78-2.72-4.71-2.95M12 16c1.53 0 3.24.5 4.23 1H7.77c.99-.5 2.7-1 4.23-1Z"/></svg>
                     <div data-i18n="Tables"> Hodimlar </div>
                 </a>
             </li>
@@ -110,40 +110,39 @@
 
         <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
             <a href="{{route('admin.informations')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16 0H8C6.9 0 6 .9 6 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6m4 18H8V2h7v5h5v11M4 4v18h16v2H4c-1.1 0-2-.9-2-2V4h2m6 6v2h8v-2h-8m0 4v2h5v-2h-5Z"/></svg>
                 <div data-i18n="Tables"> Ma'lumotlari </div>
             </a>
         </li>
 
 
-
-        <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
-            <a href="{{route('admin.informations')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+        <li class="menu-item {{ Route::is('admin.employments') ? 'active' : '' }}">
+            <a href="{{route('admin.employments')}}" class="menu-link ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6c.58 0 1.05.2 1.42.59c.38.41.58.86.58 1.41v11c0 .55-.2 1-.58 1.41c-.37.39-.84.59-1.42.59H4c-.58 0-1.05-.2-1.42-.59C2.2 20 2 19.55 2 19V8c0-.55.2-1 .58-1.41C2.95 6.2 3.42 6 4 6h4V4c0-.58.2-1.05.58-1.42C8.95 2.2 9.42 2 10 2h4c.58 0 1.05.2 1.42.58c.38.37.58.84.58 1.42v2h4M4 8v11h16V8H4m10-2V4h-4v2h4Z"/></svg>
                 <div data-i18n="Tables"> Aholi bandligi </div>
             </a>
         </li>
 
 
-        <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
-            <a href="{{route('admin.informations')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+        <li class="menu-item {{ Route::is('admin.statuses') ? 'active' : '' }}">
+            <a href="{{route('admin.statuses')}}" class="menu-link ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 2v3.5c1.1 0 2 1.12 2 2.5s-.9 2.5-2 2.5v3c1.1 0 2 1.12 2 2.5s-.9 2.5-2 2.5V22h3.5c0-1.1 1.12-2 2.5-2s2.5.9 2.5 2h3c0-1.1 1.12-2 2.5-2s2.5.9 2.5 2H22v-3.5c-1.1 0-2-1.12-2-2.5s.9-2.5 2-2.5v-3c-1.1 0-2-1.12-2-2.5s.9-2.5 2-2.5V2h-3.5c0 1.1-1.12 2-2.5 2s-2.5-.9-2.5-2h-3c0 1.1-1.12 2-2.5 2s-2.5-.9-2.5-2H2m4 4h12v12H6V6m3 1a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m8 3l-3 3l-2-1l-5 5h10v-7Z"/></svg>
                 <div data-i18n="Tables"> Ijtimoiy holati </div>
             </a>
         </li>
 
 
-         <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
-            <a href="{{route('admin.informations')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
+         <li class="menu-item {{ Route::is('admin.indicators') ? 'active' : '' }}">
+            <a href="{{route('admin.indicators')}}" class="menu-link ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.5 11L13 7.5l1.4-1.4l2.1 2.1L20.7 4l1.4 1.4l-5.6 5.6M11 7H2v2h9V7m10 6.4L19.6 12L17 14.6L14.4 12L13 13.4l2.6 2.6l-2.6 2.6l1.4 1.4l2.6-2.6l2.6 2.6l1.4-1.4l-2.6-2.6l2.6-2.6M11 15H2v2h9v-2Z"/></svg>
                 <div data-i18n="Tables"> Ko'rsatgichlari </div>
             </a>
         </li>
 
-         <li class="menu-item {{ Route::is('admin.informations') ? 'active' : '' }}">
-            <a href="{{route('admin.informations')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxl-unsplash"></i>
-                <div data-i18n="Tables"> Ma'naviy muhiti </div>
+         <li class="menu-item {{ Route::is('admin.environments') ? 'active' : '' }}">
+            <a href="{{route('admin.environments')}}" class="menu-link ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 5c-1.11-.35-2.33-.5-3.5-.5c-1.95 0-4.05.4-5.5 1.5c-1.45-1.1-3.55-1.5-5.5-1.5c-1.95 0-4.05.4-5.5 1.5v14.65c0 .25.25.5.5.5c.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5c1.35-.85 3.8-1.5 5.5-1.5c1.65 0 3.35.3 4.75 1.05c.1.05.15.05.25.05c.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1m0 13.5c-1.1-.35-2.3-.5-3.5-.5c-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5c1.2 0 2.4.15 3.5.5v11.5Z"/></svg>
+                <div data-i18n="Tables">   Ma'naviy muhiti </div>
             </a>
         </li>
 

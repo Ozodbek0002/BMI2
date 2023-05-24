@@ -152,6 +152,7 @@
 </script>
 
 
+
 <!-- Core JS -->
 @yield('script')
 

@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Informations;
-use App\Http\Requests\StoreInformationsRequest;
-use App\Http\Requests\UpdateInformationsRequest;
+use App\Models\SocialStatus;
+use App\Http\Requests\StoreSocialStatusRequest;
+use App\Http\Requests\UpdateSocialStatusRequest;
 
-class InformationsController extends Controller
+class SocialStatusController extends Controller
 {
 
     public function index()
     {
-        $informations = Informations::paginate(10);
+        $statuses = SocialStatus::paginate(10);
 
-        return view('admin.informations.index', [
-            'informations'=>$informations,
+        return view('admin.statuses.index', [
+            'statuses'=>$statuses,
         ]);
+
     }
 
     /**
@@ -29,7 +30,7 @@ class InformationsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreInformationsRequest $request)
+    public function store(StoreSocialStatusRequest $request)
     {
         //
     }
@@ -37,7 +38,7 @@ class InformationsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Informations $informations)
+    public function show(SocialStatus $socialStatus)
     {
         //
     }
@@ -45,7 +46,7 @@ class InformationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Informations $informations)
+    public function edit(SocialStatus $socialStatus)
     {
         //
     }
@@ -53,7 +54,7 @@ class InformationsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateInformationsRequest $request, Informations $informations)
+    public function update(UpdateSocialStatusRequest $request, SocialStatus $socialStatus)
     {
         //
     }
@@ -61,7 +62,7 @@ class InformationsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Informations $informations)
+    public function destroy(SocialStatus $socialStatus)
     {
         //
     }
