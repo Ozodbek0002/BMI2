@@ -20,51 +20,43 @@ class MahallaController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreMahallaRequest $request)
     {
-        //
+        Mahalla::create($request->all());
+        return redirect()->route('admin.mahallas')->with('msg', 'Mahalla muvaffaqiyatli yaratildi.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Mahalla $mahalla)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Mahalla $mahalla)
     {
-        //
+       //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateMahallaRequest $request, Mahalla $mahalla)
     {
-        //
+        $mahalla->update($request->all());
+
+        return redirect()->route('admin.mahallas')->with('msg', 'Mahalla muvaffaqiyatli yangilandi.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Mahalla $mahalla)
     {
-        //
+        $mahalla->delete();
+        return redirect()->route('admin.mahallas')->with('msg', 'Mahalla muvaffaqiyatli o`chirildi.');
     }
 }

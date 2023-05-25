@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Informations;
+use App\Models\Mahalla;
 use App\Http\Requests\StoreInformationsRequest;
 use App\Http\Requests\UpdateInformationsRequest;
 
@@ -12,57 +13,54 @@ class InformationsController extends Controller
     public function index()
     {
         $informations = Informations::paginate(10);
+        $mahallas = Mahalla::all();
 
         return view('admin.informations.index', [
             'informations'=>$informations,
+            'mahallas'=>$mahallas,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreInformationsRequest $request)
     {
-        //
+        Informations::create($request->all());
+        return redirect()->route('admin.informations')->with('msg', 'Ma`lumotlar muvaffaqiyatli saqlandi');
+
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Informations $informations)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Informations $informations)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateInformationsRequest $request, Informations $informations)
     {
-        //
+        Informations::update($request->all());
+        return redirect()->route('admin.informations')->with('msg', 'Ma`lumotlar muvaffaqiyatli yangilandi');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Informations $informations)
+
+    public function destroy($id)
     {
-        //
+        $informations = Informations::find($id);
+        $informations->delete();
+        return redirect()->route('admin.informations')->with('msg', 'Ma`lumotlar muvaffaqiyatli o`chirildi');
+
     }
 }

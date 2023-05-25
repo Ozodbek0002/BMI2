@@ -35,6 +35,7 @@ Route::resource('environments', EnvironmentController::class)->name('index', 'en
 
 
 Route::post('SearchUsers',[SearchController::class, 'SearchUsers'])->name('SearchUsers');
+Route::post('SearchMahallas',[SearchController::class, 'SearchMahallas'])->name('SearchMahallas');
 
 
 });

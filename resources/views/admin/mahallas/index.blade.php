@@ -12,26 +12,73 @@
 
                     <div class="col-md-6">
 
-                        {{--                        <form action="{{ route('admin.SearchUsers') }}" method="post">--}}
-                        {{--                            @csrf--}}
-                        {{--                            <div class="input-group">--}}
-                        {{--                                <input type="text" name="search" class="form-control" placeholder="Qidirish...">--}}
-                        {{--                                <button class="btn btn-primary" type="submit">--}}
-                        {{--                                    <i class="fa fa-search"></i>--}}
-                        {{--                                </button>--}}
-                        {{--                            </div>--}}
-                        {{--                        </form>--}}
+                        <form action="{{ route('admin.SearchMahallas') }}" method="post">
+                            @csrf
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Qidirish...">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
 
                     </div>
 
                     <div class="col-md-3">
-                        <a class="btn btn-primary" href="{{route('admin.mahallas.create')}}">
-                            <span class="btn-label">
-                                <i class="fa fa-plus"></i>
-                            </span>
+                        <a class="btn ">
+                            <button data-bs-toggle="modal" data-bs-target="#addModal"
+                                    type="button" class="btn btn-success  btn-sm">
+                                <span class="btn-label">
+                                    <i class="bx bx-add-to-queue"></i>
+                                </span>
+                            </button>
                             Mahalla qo'shish
                         </a>
                     </div>
+
+
+                    {{--                        Add Modal--}}
+                    <div class="modal fade" id="addModal" tabindex="-1"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content container">
+
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-3" id="exampleModalLabel"> Yangi Mahalla </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+
+                                <form action="{{route('admin.mahallas.store')}}" method="POST" accept-charset="UTF-8"
+                                      enctype="multipart/form-data">
+                                    @csrf
+
+
+                                    <div class="form-group ">
+                                        <label for=""> Mahalla nomi </label>
+                                        <input type="text" name="name" value="{{old('name')}}" class="form-control">
+                                        @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <br>
+                                    <br>
+
+                                    <button type="submit" id="alert" class="btn btn-primary ">Saqlash</button>
+                                    <input type="reset" class="btn btn-danger" value="Tozalash">
+
+
+                                </form>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
 
                 </div>
 
@@ -44,9 +91,7 @@
                         <tr>
                             <th class="" scope="col">T/R</th>
                             <th class="" scope="col"> Mahalla nomi</th>
-                            <th class="" scope="col"> Rahbari</th>
                             <th class="" scope="col"> Amallar</th>
-
                         </tr>
                         </thead>
                         <tbody>
@@ -57,31 +102,29 @@
 
                                 <td>{{ $mahalla->name  }}</td>
 
-                                <td>{{ $mahalla->name }}</td>
-
 
                                 <td class="col-2">
 
 
-                                    {{--                                    @if($mahalla->id != 1)--}}
+{{--                                    @if($mahalla->id != 1)--}}
 
-                                    {{--                                        <a class="btn btn-success btn-sm"--}}
-                                    {{--                                           href="{{ route('admin.mahallas.show',$mahalla->id) }}">--}}
-                                    {{--                                            <span class="btn-label">--}}
-                                    {{--                                                  <i class="bx bxs-show"></i>--}}
-                                    {{--                                            </span>--}}
-                                    {{--                                        </a>--}}
+{{--                                        <a class="btn btn-success btn-sm"--}}
+{{--                                           href="{{ route('admin.mahallas.show',$mahalla->id) }}">--}}
+{{--                                            <span class="btn-label">--}}
+{{--                                                  <i class="bx bxs-show"></i>--}}
+{{--                                            </span>--}}
+{{--                                        </a>--}}
 
-                                    {{--                                    @endif--}}
+{{--                                    @endif--}}
 
 
-                                    <a class="btn btn-warning btn-sm"
-                                       href="{{ route('admin.mahallas.edit',$mahalla->id) }}">
-                                            <span class="btn-label">
-                                                <i class="bx bx-pen"></i>
-                                            </span>
-                                    </a>
 
+                                    <button data-bs-toggle="modal" data-bs-target="#editModal{{$mahalla->id}}"
+                                            type="button" class="btn btn-warning  btn-sm">
+                                                <span class="btn-label">
+                                                    <i class="bx bx-pen"></i>
+                                                </span>
+                                    </button>
 
                                     <button data-bs-toggle="modal" data-bs-target="#deleteModal{{$mahalla->id}}"
                                             type="button" class="btn btn-danger  btn-sm">
@@ -89,6 +132,45 @@
                                                     <i class="bx bx-trash"></i>
                                                 </span>
                                     </button>
+
+                                    {{--                                    Edit Modals--}}
+                                    <div class="modal fade" id="editModal{{$mahalla->id}}" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-3" id="exampleModalLabel"> Mahalla
+                                                        tahrirlang </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+
+                                                <form action="{{route('admin.mahallas.update',$mahalla->id)}}" method="POST"
+                                                      accept-charset="UTF-8" method="post"
+                                                      enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    <div class="form-group">
+                                                        <label for="title"> Mahalla nomi </label>
+                                                        <input type="text" id="title" name="name"
+                                                               value="{{$mahalla->name}}" class="form-control" required>
+                                                    </div>
+
+
+                                                    <br>
+
+                                                    <button type="submit" id="alert" class="btn btn-primary ">Saqlash
+                                                    </button>
+                                                    <input type="reset" class="btn btn-danger" value="Tozalash">
+
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
 
 
                                     {{-- Delete  Modals--}}

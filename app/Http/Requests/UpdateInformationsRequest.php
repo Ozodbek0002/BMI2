@@ -11,7 +11,7 @@ class UpdateInformationsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateInformationsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'mahalla_id' => 'required',
+            'full_name' => 'required',
+            'position' => 'required',
+            'address' => 'required',
+            'phone' => 'required|digits:9',
         ];
     }
 }
