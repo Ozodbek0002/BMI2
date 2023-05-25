@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Environment, Indicators, SocialStatus, User, Mahalla, Employment};
+use App\Models\{Environment, Indicators, Informations, SocialStatus, User, Mahalla, Employment};
 
 class SearchController extends Controller
 {
@@ -29,15 +29,16 @@ class SearchController extends Controller
 
     public function  SearchInformation(Request $request){
         $search = $request->get('search');
-        $informations = Employment::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $informations = Informations::where('full_name', 'like', '%'.$search.'%')->paginate(10);
         $mahallas = Mahalla::all();
 
-        return view('admin.employments.index', [
+        return view('admin.informations.index', [
             'informations' => $informations,
             'mahallas' => $mahallas
         ]);
 
     }
+
 
     public function  SearchEmployments(Request $request){
         $search = $request->get('search');
@@ -67,7 +68,7 @@ class SearchController extends Controller
 
     public function SearchIndicators(Request $request){
         $search = $request->get('search');
-        $indicators = Indicators::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $indicators = Indicators::where('title', 'like', '%'.$search.'%')->paginate(10);
         $mahallas = Mahalla::all();
 
         return view('admin.indicators.index', [

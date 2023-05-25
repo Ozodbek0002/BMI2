@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Environment;
+use App\Models\ { Environment, Mahalla };
 use App\Http\Requests\StoreEnvironmentRequest;
 use App\Http\Requests\UpdateEnvironmentRequest;
 
@@ -12,10 +12,11 @@ class EnvironmentController extends Controller
     public function index()
     {
         $environments = Environment::paginate(10);
+        $mahallas = Mahalla::all();
 
         return view('admin.environments.index', [
             'environments'=>$environments,
-
+            'mahallas' => $mahallas,
         ]);
     }
 
@@ -25,43 +26,36 @@ class EnvironmentController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreEnvironmentRequest $request)
     {
-        //
+        Environment::create($request->all());
+        return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli qo`shildi');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Environment $environment)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Environment $environment)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateEnvironmentRequest $request, Environment $environment)
     {
-        //
+        $environment->update($request->all());
+        return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli yangilandi');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Environment $environment)
     {
-        //
+        $environment->delete();
+        return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli o`chirildi');
     }
 }

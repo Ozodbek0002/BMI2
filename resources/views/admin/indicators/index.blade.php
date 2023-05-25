@@ -12,7 +12,7 @@
 
                     <div class="col-md-6">
 
-                        <form action="{{ route('admin.SearchUsers') }}" method="post">
+                        <form action="{{ route('admin.SearchIndicators') }}" method="post">
                             @csrf
                             <div class="input-group">
                                 <input type="text" name="search" class="form-control" placeholder="Qidirish...">
@@ -105,7 +105,7 @@
 
                                     {{--Women Count--}}
                                     <div class="form-group ">
-                                        <label for=""> Umumiy Soni </label>
+                                        <label for=""> Ayollar Soni </label>
                                         <input type="number" name="w_count" value="{{old('w_count')}}"
                                                class="form-control">
                                         @error('w_count')
@@ -236,7 +236,7 @@
 
                                                     {{-- Name--}}
                                                     <div class="form-group ">
-                                                        <label for=""> F.I.Sh </label>
+                                                        <label for=""> Nomi </label>
                                                         <input type="text" name="title" value="{{ $indicator->title }}"
                                                                class="form-control">
                                                         @error('title')
@@ -251,7 +251,7 @@
                                                     {{-- All Count--}}
 
                                                     <div class="form-group ">
-                                                        <label for=""> Raqami </label>
+                                                        <label for=""> Umumiy soni </label>
                                                         <input type="number" name="count"
                                                                value="{{ $indicator->count}}"
                                                                class="form-control">
@@ -265,7 +265,7 @@
                                                     {{-- Women Count--}}
 
                                                     <div class="form-group ">
-                                                        <label for=""> Raqami </label>
+                                                        <label for=""> Ayollar soni </label>
                                                         <input type="number" name="w_count"
                                                                value="{{ $indicator->w_count}}"
                                                                class="form-control">

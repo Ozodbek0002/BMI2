@@ -45,6 +45,7 @@
                             <th class="" scope="col">T/R</th>
                             <th class="" scope="col"> Ism Familiyasi </th>
                             <th class="" scope="col"> Lavozimi </th>
+                            <th class="" scope="col"> Mahallasi  </th>
                             <th class="" scope="col"> Telefon raqami </th>
                             <th class="" scope="col"> Amallar</th>
 
@@ -56,11 +57,16 @@
                             <tr>
                                                                 <td class="col-1">{{($users->currentpage()-1)*($users->perpage())+$ind+1}}</td>
 
-{{--                                <td class="col-1">{{ $ind+1 }}</td>--}}
 
                                 <td>{{ $user->name  }}</td>
 
                                 <td>{{ $user->role->name }}</td>
+
+                                <td>
+                                    @if( $user->id!=1 )
+                                        {{ $user->mahalla->name }}
+                                    @endif
+                                </td>
 
                                 <td>{{ $user->phone }}</td>
 

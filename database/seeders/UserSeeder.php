@@ -22,13 +22,25 @@ class UserSeeder extends Seeder
             ]);
 
         $user = User::create([
-            'name' => 'Mahalla',
-            'email' => 'mahalla@gmail.com',
+            'name' => 'Mahalla1',
+            'email' => 'mahalla1@gmail.com',
             'password' => Hash::make('mahalla001'),
             'phone' => '912770919',
             'role_id' => 2,
-            'mahalla_id' => 1,
+            'mahalla_id' => 2,
             ]);
+
+          $user = User::create([
+            'name' => 'Mahalla2',
+            'email' => 'mahalla2@gmail.com',
+            'password' => Hash::make('mahalla001'),
+            'phone' => '912770919',
+            'role_id' => 2,
+            'mahalla_id' => 3,
+            ]);
+
+
+
 
     }
 }

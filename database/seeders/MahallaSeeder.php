@@ -12,8 +12,15 @@ class MahallaSeeder extends Seeder
     public function run(): void
     {
         $mahalla = Mahalla::create([
+            'name' => 'Administator',
+        ]);
+
+        $mahalla = Mahalla::create([
             'name' => 'Bog`zor',
         ]);
+
+
+
 
         $mahalla = Mahalla::create([
             'name' => 'Ittivoq',

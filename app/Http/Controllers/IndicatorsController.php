@@ -30,7 +30,7 @@ class IndicatorsController extends Controller
     public function store(StoreIndicatorsRequest $request)
     {
         Indicators::create($request->all());
-        return redirect()->route('admin.indicators')->with('msg', 'Indicators created successfully');
+        return redirect()->route('admin.indicators')->with('msg', 'Ko`rsatgich muvaffaqiyatli qo`shildi');
     }
 
 
@@ -49,13 +49,13 @@ class IndicatorsController extends Controller
     public function update(UpdateIndicatorsRequest $request, Indicators $indicators)
     {
         $indicators->update($request->all());
-        return redirect()->route('admin.indicators')->with('msg', 'Indicators updated successfully');
+        return redirect()->route('admin.indicators')->with('msg', 'Ko`rsatgich muvaffaqiyatli yangilandi');
     }
 
 
     public function destroy( $id )
     {
         Indicators::find($id)->delete();
-        return redirect()->route('admin.indicators')->with('msg', 'Indicators deleted successfully');
+        return redirect()->route('admin.indicators')->with('msg', 'Ko`rsatgich muvaffaqiyatli o`chirildi');
     }
 }

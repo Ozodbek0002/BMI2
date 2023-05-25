@@ -11,7 +11,7 @@ class UpdateEnvironmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateEnvironmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'mahalla_id' => 'required|integer',
+            'name' => 'required|string',
+            'count' => 'required|integer',
+            'w_count' => 'required|integer',
+            'y_count' => 'required|integer',
         ];
     }
 }
