@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Indicators;
+use App\Models\{ Indicators, Mahalla };
 use App\Http\Requests\StoreIndicatorsRequest;
 use App\Http\Requests\UpdateIndicatorsRequest;
 
@@ -12,58 +12,50 @@ class IndicatorsController extends Controller
     public function index()
     {
         $indicators = Indicators::paginate(10);
-
+        $mahallas = Mahalla::all();
         return view('admin.indicators.index', [
             'indicators'=> $indicators,
+            'mahallas' => $mahallas,
 
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreIndicatorsRequest $request)
     {
-        //
+        Indicators::create($request->all());
+        return redirect()->route('admin.indicators')->with('msg', 'Indicators created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Indicators $indicators)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Indicators $indicators)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateIndicatorsRequest $request, Indicators $indicators)
     {
-        //
+        $indicators->update($request->all());
+        return redirect()->route('admin.indicators')->with('msg', 'Indicators updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Indicators $indicators)
     {
-        //
+        $indicators->delete();
+        return redirect()->route('admin.indicators')->with('msg', 'Indicators deleted successfully');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SocialStatus;
+use App\Models\Mahalla;
 use App\Http\Requests\StoreSocialStatusRequest;
 use App\Http\Requests\UpdateSocialStatusRequest;
 
@@ -12,9 +13,11 @@ class SocialStatusController extends Controller
     public function index()
     {
         $statuses = SocialStatus::paginate(10);
+        $mahallas = Mahalla::all();
 
         return view('admin.statuses.index', [
             'statuses'=>$statuses,
+            'mahallas'=>$mahallas,
         ]);
 
     }
@@ -52,9 +55,10 @@ class SocialStatusController extends Controller
     }
 
 
-    public function destroy(SocialStatus $socialStatus)
+    public function destroy( $id )
     {
-        $socialStatus->delete();
+
+        SocialStatus::find($id)->delete();
         return redirect()->route('admin.statuses')->with('msg', 'Ma`lumot o`chirildi');
     }
 }

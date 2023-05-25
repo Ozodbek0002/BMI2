@@ -11,7 +11,7 @@ class UpdateIndicatorsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateIndicatorsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'mahalla_id' => 'required',
+            'title'=> 'required',
+            'count' => 'required',
+            'w_count' => 'required',
         ];
     }
 }
