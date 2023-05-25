@@ -53,9 +53,9 @@ class IndicatorsController extends Controller
     }
 
 
-    public function destroy(Indicators $indicators)
+    public function destroy( $id )
     {
-        $indicators->delete();
+        Indicators::find($id)->delete();
         return redirect()->route('admin.indicators')->with('msg', 'Indicators deleted successfully');
     }
 }

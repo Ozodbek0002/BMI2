@@ -25,7 +25,6 @@
                     </div>
 
 
-
                     <div class="col-md-3">
                         <a class="btn ">
                             <button data-bs-toggle="modal" data-bs-target="#addModal"
@@ -52,7 +51,7 @@
                                 </div>
                                 <br>
 
-                                <form action="{{route('admin.statuses.store')}}" method="POST"
+                                <form action="{{route('admin.indicators.store')}}" method="POST"
                                       accept-charset="UTF-8"
                                       enctype="multipart/form-data">
                                     @csrf
@@ -115,7 +114,6 @@
                                     </div>
 
 
-
                                     <br>
                                     <br>
 
@@ -132,7 +130,6 @@
                     </div>
 
 
-
                 </div>
 
                 <hr>
@@ -143,11 +140,11 @@
                         <thead>
                         <tr>
                             <th class="" scope="col">T/R</th>
-                            <th class="" scope="col"> Mahallasi </th>
-                            <th class="" scope="col"> Nomi </th>
-                            <th class="" scope="col"> Umumiy Soni </th>
-                            <th class="" scope="col"> Ayollar Soni </th>
-                            <th class="" scope="col"> Amallar </th>
+                            <th class="" scope="col"> Mahallasi</th>
+                            <th class="" scope="col"> Nomi</th>
+                            <th class="" scope="col"> Umumiy Soni</th>
+                            <th class="" scope="col"> Ayollar Soni</th>
+                            <th class="" scope="col"> Amallar</th>
 
                         </tr>
                         </thead>
@@ -169,7 +166,6 @@
                                 <td class="col-2">
 
 
-
                                     <button data-bs-toggle="modal" data-bs-target="#editModal{{$indicator->id}}"
                                             type="button" class="btn btn-warning  btn-sm">
                                                 <span class="btn-label">
@@ -178,14 +174,6 @@
                                     </button>
 
 
-
-
-                                    <a class="btn btn-warning btn-sm"
-                                       href="{{ route('admin.indicators.edit',$indicator->id) }}">
-                                            <span class="btn-label">
-                                                <i class="bx bx-pen"></i>
-                                            </span>
-                                    </a>
 
 
                                     <button data-bs-toggle="modal"
@@ -211,7 +199,7 @@
                                                             aria-label="Close"></button>
                                                 </div>
 
-                                                <form action="{{route('admin.statuses.update',$indicator->id)}}"
+                                                <form action="{{route('admin.indicators.update',$indicator->id)}}"
                                                       method="POST"
                                                       accept-charset="UTF-8" method="post"
                                                       enctype="multipart/form-data">
@@ -249,9 +237,9 @@
                                                     {{-- Name--}}
                                                     <div class="form-group ">
                                                         <label for=""> F.I.Sh </label>
-                                                        <input type="text" name="name" value="{{ $indicator->name }}"
+                                                        <input type="text" name="title" value="{{ $indicator->title }}"
                                                                class="form-control">
-                                                        @error('name')
+                                                        @error('title')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -260,7 +248,7 @@
 
 
                                                     <br>
-                                                    {{--Count--}}
+                                                    {{-- All Count--}}
 
                                                     <div class="form-group ">
                                                         <label for=""> Raqami </label>
@@ -268,6 +256,20 @@
                                                                value="{{ $indicator->count}}"
                                                                class="form-control">
                                                         @error('count')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+
+                                                    <br>
+                                                    {{-- Women Count--}}
+
+                                                    <div class="form-group ">
+                                                        <label for=""> Raqami </label>
+                                                        <input type="number" name="w_count"
+                                                               value="{{ $indicator->w_count}}"
+                                                               class="form-control">
+                                                        @error('w_count')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -287,7 +289,6 @@
                                             </div>
                                         </div>
                                     </div>
-
 
 
                                     {{-- Delete  Modals--}}
