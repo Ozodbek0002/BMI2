@@ -50,7 +50,7 @@ class InformationsController extends Controller
 
     public function update(UpdateInformationsRequest $request, Informations $informations)
     {
-        Informations::update($request->all());
+        $informations->update($request->all());
         return redirect()->route('admin.informations')->with('msg', 'Ma`lumotlar muvaffaqiyatli yangilandi');
 
     }

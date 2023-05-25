@@ -12,7 +12,7 @@
 
                     <div class="col-md-6">
 
-                        <form action="{{ route('admin.SearchUsers') }}" method="post">
+                        <form action="{{ route('admin.SearchInformation') }}" method="post">
                             @csrf
                             <div class="input-group">
                                 <input type="text" name="search" class="form-control" placeholder="Qidirish...">
@@ -138,6 +138,7 @@
                         </div>
                     </div>
 
+
                 </div>
 
                 <hr>
@@ -245,7 +246,8 @@
                                                     {{--Position--}}
                                                     <div class="form-group ">
                                                         <label for=""> Lavozimi </label>
-                                                        <input type="text" name="position" value="{{ $information->position }}"
+                                                        <input type="text" name="position"
+                                                               value="{{ $information->position }}"
                                                                class="form-control">
                                                         @error('position')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -257,7 +259,8 @@
                                                     {{--Full Name--}}
                                                     <div class="form-group ">
                                                         <label for=""> F.I.Sh </label>
-                                                        <input type="text" name="full_name" value="{{ $information->full_name }}"
+                                                        <input type="text" name="full_name"
+                                                               value="{{ $information->full_name }}"
                                                                class="form-control">
                                                         @error('full_name')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -269,7 +272,8 @@
                                                     {{--Address--}}
                                                     <div class="form-group ">
                                                         <label for=""> Manzili </label>
-                                                        <input type="text" name="address" value="{{ $information->address}}"
+                                                        <input type="text" name="address"
+                                                               value="{{ $information->address}}"
                                                                class="form-control">
                                                         @error('address')
                                                         <span class="text-danger">{{ $message }}</span>

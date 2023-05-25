@@ -36,6 +36,11 @@ Route::resource('environments', EnvironmentController::class)->name('index', 'en
 
 Route::post('SearchUsers',[SearchController::class, 'SearchUsers'])->name('SearchUsers');
 Route::post('SearchMahallas',[SearchController::class, 'SearchMahallas'])->name('SearchMahallas');
+Route::post('SearchInformation',[SearchController::class, 'SearchInformation'])->name('SearchInformation');
+Route::post('SearchEmployments',[SearchController::class, 'SearchEmployments'])->name('SearchEmployments');
+Route::post('SearchStatuses',[SearchController::class, 'SearchStatuses'])->name('SearchStatuses');
+Route::post('SearchIndicators',[SearchController::class, 'SearchIndicators'])->name('SearchIndicators');
+Route::post('SearchEnvironments',[SearchController::class, 'SearchEnvironments'])->name('SearchEnvironments');
 
 
 });

@@ -19,51 +19,42 @@ class SocialStatusController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreSocialStatusRequest $request)
     {
-        //
+        SocialStatus::create($request->all());
+        return redirect()->route('admin.statuses')->with('msg', 'Ma`lumot qo`shildi');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(SocialStatus $socialStatus)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(SocialStatus $socialStatus)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateSocialStatusRequest $request, SocialStatus $socialStatus)
     {
-        //
+        $socialStatus->update($request->all());
+        return redirect()->route('admin.statuses')->with('msg', 'Ma`lumot yangilandi');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(SocialStatus $socialStatus)
     {
-        //
+        $socialStatus->delete();
+        return redirect()->route('admin.statuses')->with('msg', 'Ma`lumot o`chirildi');
     }
 }

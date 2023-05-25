@@ -6,12 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEmploymentRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +20,9 @@ class StoreEmploymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'count' => 'required',
+            'mahalla_id' => 'required',
         ];
     }
 }

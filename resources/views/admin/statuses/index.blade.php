@@ -12,15 +12,15 @@
 
                     <div class="col-md-6">
 
-                        {{--                        <form action="{{ route('admin.SearchUsers') }}" method="post">--}}
-                        {{--                            @csrf--}}
-                        {{--                            <div class="input-group">--}}
-                        {{--                                <input type="text" name="search" class="form-control" placeholder="Qidirish...">--}}
-                        {{--                                <button class="btn btn-primary" type="submit">--}}
-                        {{--                                    <i class="fa fa-search"></i>--}}
-                        {{--                                </button>--}}
-                        {{--                            </div>--}}
-                        {{--                        </form>--}}
+                        <form action="{{ route('admin.SearchUsers') }}" method="post">
+                            @csrf
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Qidirish...">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
 
                     </div>
 

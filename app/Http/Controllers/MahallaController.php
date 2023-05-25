@@ -49,7 +49,6 @@ class MahallaController extends Controller
     public function update(UpdateMahallaRequest $request, Mahalla $mahalla)
     {
         $mahalla->update($request->all());
-
         return redirect()->route('admin.mahallas')->with('msg', 'Mahalla muvaffaqiyatli yangilandi.');
     }
 

@@ -11,7 +11,7 @@ class UpdateSocialStatusRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateSocialStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'mahalla_id'=>'required',
+            'name'=>'required',
+            'count'=>'required|numeric',
         ];
     }
 }

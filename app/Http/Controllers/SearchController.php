@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Mahalla;
+use App\Models\{Environment, Indicators, SocialStatus, User, Mahalla, Employment};
 
 class SearchController extends Controller
 {
@@ -13,7 +12,7 @@ class SearchController extends Controller
         $search = $request->get('search');
         $users = User::where('name', 'like', '%'.$search.'%')->paginate(10);
         return view('admin.users.index', [
-            'users' => $users
+            'users' => $users,
         ]);
 
     }
@@ -26,6 +25,71 @@ class SearchController extends Controller
         ]);
 
     }
+
+
+    public function  SearchInformation(Request $request){
+        $search = $request->get('search');
+        $informations = Employment::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $mahallas = Mahalla::all();
+
+        return view('admin.employments.index', [
+            'informations' => $informations,
+            'mahallas' => $mahallas
+        ]);
+
+    }
+
+    public function  SearchEmployments(Request $request){
+        $search = $request->get('search');
+        $employments = Employment::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $mahallas = Mahalla::all();
+
+        return view('admin.employments.index', [
+            'employments' => $employments,
+            'mahallas' => $mahallas
+        ]);
+
+    }
+
+
+    public function SearchStatuses(Request $request){
+        $search = $request->get('search');
+        $statuses = SocialStatus::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $mahallas = Mahalla::all();
+
+        return view('admin.statuses.index', [
+            'statuses' => $statuses,
+            'mahallas' => $mahallas
+        ]);
+
+    }
+
+
+    public function SearchIndicators(Request $request){
+        $search = $request->get('search');
+        $indicators = Indicators::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $mahallas = Mahalla::all();
+
+        return view('admin.indicators.index', [
+            'indicators' => $indicators,
+            'mahallas' => $mahallas
+        ]);
+
+    }
+
+
+    public function SearchEnvironments(Request $request){
+        $search = $request->get('search');
+        $environments = Environment::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $mahallas = Mahalla::all();
+
+        return view('admin.environments.index', [
+            'environments' => $environments,
+            'mahallas' => $mahallas
+        ]);
+
+    }
+
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employment;
+use App\Models\Mahalla;
 use App\Http\Requests\StoreEmploymentRequest;
 use App\Http\Requests\UpdateEmploymentRequest;
 
@@ -12,9 +13,11 @@ class EmploymentController extends Controller
     public function index()
     {
         $employments = Employment::paginate();
+        $mahallas = Mahalla::all();
 
         return view('admin.employments.index', [
             'employments'=>$employments,
+            'mahallas'=>$mahallas,
         ]);
     }
 
@@ -24,36 +27,30 @@ class EmploymentController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreEmploymentRequest $request)
     {
-        //
+        Employment::create($request->all());
+        return redirect()->route('admin.employments')->with('msg', 'Ma`lumotlar muvaffaqiyatli saqlandi');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Employment $employment)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Employment $employment)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateEmploymentRequest $request, Employment $employment)
     {
-        //
+        $employment->update($request->all());
+        return redirect()->route('admin.employments')->with('msg', 'Ma`lumotlar muvaffaqiyatli yangilandi');
     }
 
     /**
@@ -61,6 +58,7 @@ class EmploymentController extends Controller
      */
     public function destroy(Employment $employment)
     {
-        //
+        $employment->delete();
+        return redirect()->route('admin.employments')->with('msg', 'Ma`lumotlar muvaffaqiyatli o`chirildi');
     }
 }
