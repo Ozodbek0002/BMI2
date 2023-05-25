@@ -24,14 +24,117 @@
 
                     </div>
 
+
+
                     <div class="col-md-3">
-                        <a class="btn btn-primary" href="{{route('admin.users.create')}}">
-                            <span class="btn-label">
-                                <i class="fa fa-plus"></i>
-                            </span>
+                        <a class="btn ">
+                            <button data-bs-toggle="modal" data-bs-target="#addModal"
+                                    type="button" class="btn btn-success  btn-sm">
+                                <span class="btn-label">
+                                    <i class="bx bx-add-to-queue"></i>
+                                </span>
+                            </button>
                             Hodim qo'shish
                         </a>
                     </div>
+
+
+                    {{--                        Add Modal--}}
+                    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content container">
+
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-3" id="exampleModalLabel"> Yangi Malumot </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <br>
+
+                                <form action="{{route('admin.users.store')}}" method="POST"
+                                      accept-charset="UTF-8"
+                                      enctype="multipart/form-data">
+                                    @csrf
+
+
+                                    <br>
+
+
+                                    {{--  Mahallas--}}
+                                    <div class="form-group ">
+                                        <label> Mahallasini tanlang </label>
+                                        <select name="mahalla_id" id="selectedDepartment" class="form-control">
+
+                                            @foreach($mahallas as $c)
+                                                <option value="{{$c->id}}">{{$c->name}}</option>
+                                            @endforeach
+
+                                        </select>
+                                        @error('mahalla_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+
+                                    </div>
+
+                                    <br>
+
+                                        {{--  Roles--}}
+                                    <input type="hidden" name="role_id" value="2">
+
+                                    <br>
+
+                                    {{-- Name--}}
+                                    <div class="form-group ">
+                                        <label for=""> F.I.Sh </label>
+                                        <input type="text" name="name" value="{{old('name')}}"
+                                               class="form-control">
+                                        @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <br>
+
+
+                                    {{--Email--}}
+                                    <div class="form-group ">
+                                        <label for=""> Manzili </label>
+                                        <input type="email" name="email" value="{{old('email')}}"
+                                               class="form-control">
+                                        @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <br>
+                                    {{--Phone--}}
+
+                                    <div class="form-group ">
+                                        <label for=""> Raqami </label>
+                                        <input type="text" name="phone" value="{{old('phone')}}" class="form-control">
+                                        @error('phone')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <br>
+                                    <br>
+
+                                    <button type="submit" id="alert" class="btn btn-primary ">Saqlash</button>
+                                    <input type="reset" class="btn btn-danger" value="Tozalash">
+
+
+                                </form>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -43,10 +146,10 @@
                         <thead>
                         <tr>
                             <th class="" scope="col">T/R</th>
-                            <th class="" scope="col"> Ism Familiyasi </th>
-                            <th class="" scope="col"> Lavozimi </th>
-                            <th class="" scope="col"> Mahallasi  </th>
-                            <th class="" scope="col"> Telefon raqami </th>
+                            <th class="" scope="col"> Ism Familiyasi</th>
+                            <th class="" scope="col"> Lavozimi</th>
+                            <th class="" scope="col"> Mahallasi</th>
+                            <th class="" scope="col"> Telefon raqami</th>
                             <th class="" scope="col"> Amallar</th>
 
                         </tr>
@@ -55,7 +158,7 @@
 
                         @foreach($users as $ind=>$user)
                             <tr>
-                                                                <td class="col-1">{{($users->currentpage()-1)*($users->perpage())+$ind+1}}</td>
+                                <td class="col-1">{{($users->currentpage()-1)*($users->perpage())+$ind+1}}</td>
 
 
                                 <td>{{ $user->name  }}</td>
@@ -63,9 +166,7 @@
                                 <td>{{ $user->role->name }}</td>
 
                                 <td>
-                                    @if( $user->id!=1 )
-                                        {{ $user->mahalla->name }}
-                                    @endif
+                                    {{ $user->mahalla->name }}
                                 </td>
 
                                 <td>{{ $user->phone }}</td>
@@ -73,13 +174,13 @@
                                 <td>{{ $user->email }}</td>
 
 
-
                                 <td class="col-2">
 
 
                                     @if($user->id != 1)
 
-                                        <a class="btn btn-success btn-sm" href="{{ route('admin.users.show',$user->id) }}">
+                                        <a class="btn btn-success btn-sm"
+                                           href="{{ route('admin.users.show',$user->id) }}">
                                             <span class="btn-label">
                                                   <i class="bx bxs-show"></i>
                                             </span>
@@ -152,17 +253,17 @@
 
                     </table>
 
-                                        <div class="container">
-                                            <div class="row justify-content-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
 
-                                                @if ($users->links())
-                                                    <div class="mt-4 p-4 box has-text-centered">
-                                                        {{ $users->links() }}
-                                                    </div>
-                                                @endif
+                            @if ($users->links())
+                                <div class="mt-4 p-4 box has-text-centered">
+                                    {{ $users->links() }}
+                                </div>
+                            @endif
 
-                                            </div>
-                                        </div>
+                        </div>
+                    </div>
 
 
                 </div>

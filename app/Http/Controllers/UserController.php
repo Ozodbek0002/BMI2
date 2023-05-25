@@ -10,8 +10,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(10);
+        $mahallas = Mahalla::all()->except(1);
         return view('admin.users.index', [
-            'users'=>$users
+            'users'=>$users,
+            'mahallas'=>$mahallas,
         ]);
     }
 
