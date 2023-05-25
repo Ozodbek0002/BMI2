@@ -45,7 +45,6 @@
                             <th class="" scope="col">T/R</th>
                             <th class="" scope="col"> Mahalla nomi</th>
                             <th class="" scope="col"> Rahbari</th>
-                            <th class="" scope="col"> Qishlog`i</th>
                             <th class="" scope="col"> Amallar</th>
 
                         </tr>
@@ -59,8 +58,6 @@
                                 <td>{{ $mahalla->name  }}</td>
 
                                 <td>{{ $mahalla->name }}</td>
-
-                                <td>{{ $mahalla->village->name }}</td>
 
 
                                 <td class="col-2">

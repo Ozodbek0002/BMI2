@@ -13,12 +13,10 @@ class MahallaSeeder extends Seeder
     {
         $mahalla = Mahalla::create([
             'name' => 'Bog`zor',
-            'village_id' => 1,
         ]);
 
         $mahalla = Mahalla::create([
             'name' => 'Ittivoq',
-            'village_id' => 2,
         ]);
 
 

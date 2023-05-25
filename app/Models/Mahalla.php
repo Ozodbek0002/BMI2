@@ -11,7 +11,6 @@ class Mahalla extends Model
 
     protected $fillable = [
         'name',
-        'village_id'
     ];
 
     public function users()
@@ -29,10 +28,6 @@ class Mahalla extends Model
         return $this->hasMany(Informations::class);
     }
 
-    public function indicators()
-    {
-        return $this->hasMany(Indicators::class);
-    }
 
     public function employments()
     {
