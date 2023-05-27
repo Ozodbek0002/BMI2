@@ -13,7 +13,7 @@ class EmploymentController extends Controller
     public function index()
     {
         $employments = Employment::paginate();
-        $mahallas = Mahalla::all();
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.employments.index', [
             'employments'=>$employments,

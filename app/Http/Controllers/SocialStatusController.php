@@ -13,7 +13,7 @@ class SocialStatusController extends Controller
     public function index()
     {
         $statuses = SocialStatus::paginate(10);
-        $mahallas = Mahalla::all();
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.statuses.index', [
             'statuses'=>$statuses,

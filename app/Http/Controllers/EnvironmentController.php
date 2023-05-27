@@ -12,7 +12,7 @@ class EnvironmentController extends Controller
     public function index()
     {
         $environments = Environment::paginate(10);
-        $mahallas = Mahalla::all();
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.environments.index', [
             'environments'=>$environments,

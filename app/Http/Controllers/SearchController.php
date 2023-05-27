@@ -8,18 +8,22 @@ use App\Models\{Environment, Indicators, Informations, SocialStatus, User, Mahal
 class SearchController extends Controller
 {
 
-    public function  SearchUsers(Request $request){
+    public function SearchUsers(Request $request)
+    {
         $search = $request->get('search');
-        $users = User::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $mahallas = Mahalla::all()->except(1);
+        $users = User::where('name', 'like', '%' . $search . '%')->paginate(10);
         return view('admin.users.index', [
             'users' => $users,
+            'mahallas' => $mahallas
         ]);
 
     }
 
-    public function  SearchMahallas(Request $request){
+    public function SearchMahallas(Request $request)
+    {
         $search = $request->get('search');
-        $mahallas = Mahalla::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $mahallas = Mahalla::where('name', 'like', '%' . $search . '%')->paginate(10);
         return view('admin.mahallas.index', [
             'mahallas' => $mahallas
         ]);
@@ -27,10 +31,11 @@ class SearchController extends Controller
     }
 
 
-    public function  SearchInformation(Request $request){
+    public function SearchInformation(Request $request)
+    {
         $search = $request->get('search');
-        $informations = Informations::where('full_name', 'like', '%'.$search.'%')->paginate(10);
-        $mahallas = Mahalla::all();
+        $informations = Informations::where('full_name', 'like', '%' . $search . '%')->paginate(10);
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.informations.index', [
             'informations' => $informations,
@@ -40,10 +45,11 @@ class SearchController extends Controller
     }
 
 
-    public function  SearchEmployments(Request $request){
+    public function SearchEmployments(Request $request)
+    {
         $search = $request->get('search');
-        $employments = Employment::where('name', 'like', '%'.$search.'%')->paginate(10);
-        $mahallas = Mahalla::all();
+        $employments = Employment::where('name', 'like', '%' . $search . '%')->paginate(10);
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.employments.index', [
             'employments' => $employments,
@@ -53,10 +59,11 @@ class SearchController extends Controller
     }
 
 
-    public function SearchStatuses(Request $request){
+    public function SearchStatuses(Request $request)
+    {
         $search = $request->get('search');
-        $statuses = SocialStatus::where('name', 'like', '%'.$search.'%')->paginate(10);
-        $mahallas = Mahalla::all();
+        $statuses = SocialStatus::where('name', 'like', '%' . $search . '%')->paginate(10);
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.statuses.index', [
             'statuses' => $statuses,
@@ -66,10 +73,11 @@ class SearchController extends Controller
     }
 
 
-    public function SearchIndicators(Request $request){
+    public function SearchIndicators(Request $request)
+    {
         $search = $request->get('search');
-        $indicators = Indicators::where('title', 'like', '%'.$search.'%')->paginate(10);
-        $mahallas = Mahalla::all();
+        $indicators = Indicators::where('title', 'like', '%' . $search . '%')->paginate(10);
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.indicators.index', [
             'indicators' => $indicators,
@@ -79,10 +87,11 @@ class SearchController extends Controller
     }
 
 
-    public function SearchEnvironments(Request $request){
+    public function SearchEnvironments(Request $request)
+    {
         $search = $request->get('search');
-        $environments = Environment::where('name', 'like', '%'.$search.'%')->paginate(10);
-        $mahallas = Mahalla::all();
+        $environments = Environment::where('name', 'like', '%' . $search . '%')->paginate(10);
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.environments.index', [
             'environments' => $environments,
@@ -90,8 +99,6 @@ class SearchController extends Controller
         ]);
 
     }
-
-
 
 
 }

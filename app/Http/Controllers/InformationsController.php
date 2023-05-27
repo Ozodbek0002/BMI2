@@ -13,7 +13,7 @@ class InformationsController extends Controller
     public function index()
     {
         $informations = Informations::paginate(10);
-        $mahallas = Mahalla::all();
+        $mahallas = Mahalla::all()->except(1);
 
         return view('admin.informations.index', [
             'informations'=>$informations,

@@ -12,7 +12,7 @@ class IndicatorsController extends Controller
     public function index()
     {
         $indicators = Indicators::paginate(10);
-        $mahallas = Mahalla::all();
+        $mahallas = Mahalla::all()->except(1);
         return view('admin.indicators.index', [
             'indicators'=> $indicators,
             'mahallas' => $mahallas,

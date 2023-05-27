@@ -18,7 +18,6 @@ use App\Http\Controllers\{
 };
 
 
-
 Route::get('/', [RouteController::class,'main'])->name('main');
 Route::get('/mahallalar', [RouteController::class,'mahallalar'])->name('mahallalar');
 
