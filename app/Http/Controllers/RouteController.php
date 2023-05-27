@@ -21,5 +21,16 @@ class RouteController extends Controller
     }
 
 
+    public function passport($id)
+    {
+        $mahalla = Mahalla::find($id);
+        return view('user.passport',[
+            'mahalla' => $mahalla,
+        ]);
+
+
+    }
+
+
 
 }

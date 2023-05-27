@@ -20,6 +20,7 @@ use App\Http\Controllers\{
 
 Route::get('/', [RouteController::class,'main'])->name('main');
 Route::get('/mahallalar', [RouteController::class,'mahallalar'])->name('mahallalar');
+Route::get('/passport/{id}', [RouteController::class,'passport'])->name('passport');
 
 
 Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
