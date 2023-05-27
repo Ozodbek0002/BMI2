@@ -15,7 +15,8 @@
 
 
                 <button type="button" class="bi bi-box-arrow-in-right btn btn-danger col-4"><a
-                        class="text-light text-uppercase" href="/"> Mahalla pasporti yig'ma jadvali </a>
+                        class="text-light text-uppercase" href="{{route('report',$mahalla->id)}}"> Mahalla pasporti
+                        yig'ma jadvali </a>
                 </button>
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
@@ -58,7 +59,7 @@
         <br>
         <br>
 
-        <div class="align-items-center" style="text-align: center">
+        <div style="text-align: center">
             <h1> {{ $mahalla->name }} mahalla passporti </h1>
         </div>
 
@@ -78,14 +79,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                @foreach($mahalla->informations as $i)
+            @foreach($mahalla->informations as $i)
+                <tr>
                     <td class="text-center"> {{ $i->position }} </td>
                     <td class="text-center"> {{ $i->full_name }} </td>
                     <td class="text-center"> {{ $i->address }} </td>
                     <td class="text-center"> {{ $i->phone }} </td>
-                @endforeach
-            </tr>
+                </tr>
+            @endforeach
             </tbody>
         </table>
 
@@ -108,12 +109,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                @foreach($mahalla->employments as $i)
+            @foreach($mahalla->employments as $i)
+                <tr>
                     <td class="text-center"> {{ $i->name }} </td>
                     <td class="text-center"> {{ $i->count }} nafar</td>
-                @endforeach
-            </tr>
+                </tr>
+            @endforeach
             </tbody>
         </table>
         <br>
@@ -134,12 +135,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                @foreach($mahalla->statuses as $i)
+            @foreach($mahalla->statuses as $i)
+                <tr>
                     <td class="text-center"> {{ $i->name }} </td>
                     <td class="text-center"> {{ $i->count }} nafar</td>
-                @endforeach
-            </tr>
+                </tr>
+            @endforeach
             </tbody>
         </table>
         <br>
@@ -161,13 +162,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                @foreach($mahalla->indicators as $i)
+            @foreach($mahalla->indicators as $i)
+                <tr>
                     <td class="text-center"> {{ $i->title }} </td>
                     <td class="text-center"> {{ $i->count }} nafar</td>
                     <td class="text-center"> {{ $i->w_count }} nafar</td>
-                @endforeach
-            </tr>
+                </tr>
+            @endforeach
             </tbody>
         </table>
         <br>
@@ -190,14 +191,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                @foreach($mahalla->environments as $i)
+            @foreach($mahalla->environments as $i)
+                <tr>
                     <td class="text-center"> {{ $i->name }} </td>
                     <td class="text-center"> {{ $i->count }} nafar</td>
                     <td class="text-center"> {{ $i->w_count }} nafar</td>
                     <td class="text-center"> {{ $i->y_count }} nafar</td>
-                @endforeach
-            </tr>
+                </tr>
+            @endforeach
             </tbody>
         </table>
         <br>

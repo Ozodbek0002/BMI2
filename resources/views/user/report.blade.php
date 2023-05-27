@@ -1,210 +1,215 @@
-@extends('user.master')
-@section('content')
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Passport </title>
 
-    <div class="container"><br>
-        <br>
+    <style>
+        /* Add the following CSS code to your existing styles or create a new CSS file */
 
-        <!--Pages start-->
-        <div class="container">
-            <div class="row">
-            <span class="ml1 col">
-                <span class="text-wrapper">
-                  <h3 class="letters"> "PDF" shaklida yuklab olish uchun bosing !!! </h3>
-                </span>
-            </span>
+        /* Set general styles for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
+        /* Set styles for table header */
+        thead th {
+            background-color: #f2f2f2;
+            border: 1px solid #dddddd;
+            padding: 8px;
+            font-weight: bold;
+        }
 
-                <button type="button" class="bi bi-box-arrow-in-right btn btn-danger col-4"><a
-                        class="text-light text-uppercase" href="/"> Mahalla pasporti yig'ma jadvali </a>
-                </button>
+        /* Set styles for table body */
+        tbody td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+        }
 
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        /* Set alternating row colors for better readability */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-                <script>// Wrap every letter in a span
-                    var textWrapper = document.querySelector('.ml1 .letters');
-                    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        /* Set hover effect on table rows */
+        tbody tr:hover {
+            background-color: #eaf6ff;
+        }
 
-                    anime.timeline({loop: true})
-                        .add({
-                            targets: '.ml1 .letter',
-                            scale: [0.3, 1],
-                            opacity: [0, 1],
-                            translateZ: 0,
-                            easing: "easeOutExpo",
-                            duration: 600,
-                            delay: (el, i) => 70 * (i + 1)
-                        }).add({
-                        targets: '.ml1 .line',
-                        scaleX: [0, 1],
-                        opacity: [0.5, 1],
-                        easing: "easeOutExpo",
-                        duration: 700,
-                        offset: '-=875',
-                        delay: (el, i, l) => 80 * (l - i)
-                    }).add({
-                        targets: '.ml1',
-                        opacity: 0,
-                        duration: 1000,
-                        easing: "easeOutExpo",
-                        delay: 1000
-                    });
-                </script>
+        /* Set styles for the first column */
+        td.col-1 {
+            width: 30px;
+        }
 
-            </div>
-        </div>
-        <!--pages end-->
+        /* Add some spacing around the table */
+        .card-body {
+            margin: 20px;
+        }
 
-        <br>
-        <br>
-        <br>
+    </style>
 
-        <div class="align-items-center" style="text-align: center">
-            <h1> {{ $mahalla->name }} mahalla passporti </h1>
-        </div>
+</head>
+<body>
 
-        <br>
-        <br>
-        <br>
+<div class="page-break container"></div>
 
-        <table class="table table-bordered">
-            <h4 class="text-center"> Mahalla fuqarolar yig'ini xodimlari va jamoatchilik tuzilmalari to'g'risida
-                ma'lumot </h4>
-            <thead class="thead btn-info">
+<div class="card-body">
+    <h2 align="center">  {{ $mahalla->name }} mahallasi "PASPORTI" </h2>
+    <br>
+    <br>
+
+    <h3 align="center">
+        Mahalla fuqarolar yig'ini xodimlari va jamoatchilik tuzilmalari to'g'risida ma'lumot
+    </h3>
+
+    <table class="table table-bordered text-center">
+
+        <thead class="thead btn-info">
+        <tr>
+            <th scope="col" class="text-center">Lavozimlar</th>
+            <th scope="col" class="text-center">F.I.SH</th>
+            <th scope="col" class="text-center">Yashash manzili</th>
+            <th scope="col" class="col-sm-2 text-center">Telefon raqami</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($mahalla->informations as $i)
             <tr>
-                <th scope="col" class="text-center">Lavozimlar</th>
-                <th scope="col" class="text-center">F.I.SH</th>
-                <th scope="col" class="text-center">Yashash manzili</th>
-                <th scope="col" class="col-sm-2 text-center">Telefon raqami</th>
+                <td class="text-center"> {{ $i->position }} </td>
+                <td class="text-center"> {{ $i->full_name }} </td>
+                <td class="text-center"> {{ $i->address }} </td>
+                <td class="text-center"> {{ $i->phone }} </td>
             </tr>
-            </thead>
-            <tbody>
+        @endforeach
+        </tbody>
+
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h3 align="center">
+        Aholining bandligi
+    </h3>
+    <table class="table table-bordered">
+        <thead class="thead btn-info">
+        <tr>
+            <th scope="col" class="text-center">Ko'rsatkichlar</th>
+            <th scope="col" class="text-center">Soni</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($mahalla->employments as $i)
             <tr>
-                @foreach($mahalla->informations as $i)
-                    <td class="text-center"> {{ $i->position }} </td>
-                    <td class="text-center"> {{ $i->full_name }} </td>
-                    <td class="text-center"> {{ $i->address }} </td>
-                    <td class="text-center"> {{ $i->phone }} </td>
-                @endforeach
+                <td class="text-center"> {{ $i->name }} </td>
+                <td class="text-center"> {{ $i->count }} nafar</td>
             </tr>
-            </tbody>
-        </table>
+        @endforeach
+        </tbody>
+    </table>
 
 
-        <br>
-        <hr>
-        <br>
-        <br>
-        <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
-        <table class="table table-bordered">
-            <h4 class="text-center">
-                Aholining bandligi
-            </h4>
-            <thead class="thead btn-info">
+    <h3 align="center">
+        Aholining ijtimoiy holati
+    </h3>
+
+    <table class="table table-bordered">
+        <thead class="thead btn-info">
+        <tr>
+            <th scope="col" class="text-center">Ko'rsatkichlar</th>
+            <th scope="col" class="text-center">Soni</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($mahalla->statuses as $i)
             <tr>
-                <th scope="col" class="text-center">Ko'rsatkichlar</th>
-                <th scope="col" class="text-center">Soni</th>
+                <td class="text-center"> {{ $i->name }} </td>
+                <td class="text-center"> {{ $i->count }} nafar</td>
             </tr>
-            </thead>
-            <tbody>
+        @endforeach
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <h3 align="center">
+        Qishloq xo'jaligi bilan bog'liq ko'rsatkichlar
+    </h3>
+    <table class="table table-bordered">
+        <thead class="thead btn-info">
+        <tr>
+            <th scope="col" class="text-center">Ko'rsatkichlar</th>
+            <th scope="col" class="text-center">Umumiy Soni</th>
+            <th scope="col" class="text-center">Ayollar Soni</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($mahalla->indicators as $i)
             <tr>
-                @foreach($mahalla->employments as $i)
-                    <td class="text-center"> {{ $i->name }} </td>
-                    <td class="text-center"> {{ $i->count }} nafar</td>
-                @endforeach
+                <td class="text-center"> {{ $i->title }} </td>
+                <td class="text-center"> {{ $i->count }} nafar</td>
+                <td class="text-center"> {{ $i->w_count }} nafar</td>
             </tr>
-            </tbody>
-        </table>
-        <br>
-        <hr>
-        <br>
-        <br>
-        <br>
+        @endforeach
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
-        <table class="table table-bordered">
-            <h4 class="text-center">
-                Aholining ijtimoiy holati
-            </h4>
-            <thead class="thead btn-info">
+    <h3 align="center">
+        Qishloq xo'jaligi bilan bog'liq ko'rsatkichlar
+    </h3>
+    <table class="table table-bordered">
+        <thead class="thead btn-info">
+        <tr>
+            <th scope="col" class="text-center">Ko'rsatkichlar</th>
+            <th scope="col" class="text-center">Umumiy Soni</th>
+            <th scope="col" class="text-center">Ayollar Soni</th>
+            <th scope="col" class="text-center">Yoshlar Soni</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($mahalla->environments as $i)
             <tr>
-                <th scope="col" class="text-center">Ko'rsatkichlar</th>
-                <th scope="col" class="text-center">Soni</th>
+                <td class="text-center"> {{ $i->name }} </td>
+                <td class="text-center"> {{ $i->count }} nafar</td>
+                <td class="text-center"> {{ $i->w_count }} nafar</td>
+                <td class="text-center"> {{ $i->y_count }} nafar</td>
             </tr>
-            </thead>
-            <tbody>
-            <tr>
-                @foreach($mahalla->statuses as $i)
-                    <td class="text-center"> {{ $i->name }} </td>
-                    <td class="text-center"> {{ $i->count }} nafar</td>
-                @endforeach
-            </tr>
-            </tbody>
-        </table>
-        <br>
-        <hr>
-        <br>
-        <br>
-        <br>
+        @endforeach
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
 
 
-        <table class="table table-bordered">
-            <h4 class="text-center">
-                Qishloq xo'jaligi bilan bog'liq ko'rsatkichlar
-            </h4>
-            <thead class="thead btn-info">
-            <tr>
-                <th scope="col" class="text-center">Ko'rsatkichlar</th>
-                <th scope="col" class="text-center">Umumiy Soni</th>
-                <th scope="col" class="text-center">Ayollar Soni</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                @foreach($mahalla->indicators as $i)
-                    <td class="text-center"> {{ $i->title }} </td>
-                    <td class="text-center"> {{ $i->count }} nafar</td>
-                    <td class="text-center"> {{ $i->w_count }} nafar</td>
-                @endforeach
-            </tr>
-            </tbody>
-        </table>
-        <br>
-        <hr>
-        <br>
-        <br>
-        <br>
+</div>
 
-
-        <table class="table table-bordered">
-            <h4 class="text-center">
-                Qishloq xo'jaligi bilan bog'liq ko'rsatkichlar
-            </h4>
-            <thead class="thead btn-info">
-            <tr>
-                <th scope="col" class="text-center">Ko'rsatkichlar</th>
-                <th scope="col" class="text-center">Umumiy Soni</th>
-                <th scope="col" class="text-center">Ayollar Soni</th>
-                <th scope="col" class="text-center">Yoshlar Soni</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                @foreach($mahalla->environments as $i)
-                    <td class="text-center"> {{ $i->name }} </td>
-                    <td class="text-center"> {{ $i->count }} nafar</td>
-                    <td class="text-center"> {{ $i->w_count }} nafar</td>
-                    <td class="text-center"> {{ $i->y_count }} nafar</td>
-                @endforeach
-            </tr>
-            </tbody>
-        </table>
-        <br>
-        <hr>
-        <br>
-
-
-    </div>
-
-@endsection
+</body>
+</html>

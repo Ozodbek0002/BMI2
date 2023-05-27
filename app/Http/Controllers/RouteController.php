@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Request;
 use App\Models\Mahalla;
 
 class RouteController extends Controller
@@ -37,7 +36,7 @@ class RouteController extends Controller
     {
         $mahalla = Mahalla::find($id);
 
-        $pdf = Pdf::loadView('user.report', compact("histories","from_date","to_date"));
+        $pdf = Pdf::loadView('user.report', compact("mahalla") );
         return $pdf->download('Mahalla-Passport-Report.pdf');
 
     }
