@@ -29,8 +29,13 @@ class IndicatorsController extends Controller
 
     public function store(StoreIndicatorsRequest $request)
     {
+        if ($request->count > $request->w_count){
         Indicators::create($request->all());
         return redirect()->route('admin.indicators')->with('msg', 'Ko`rsatgich muvaffaqiyatli qo`shildi');
+        }
+        else{
+            return redirect()->route('admin.indicators')->withErrors( 'Ko`rsatgichni ayollar soni umumiy sondan katta bolmasligi kerak.');
+        }
     }
 
 
@@ -48,8 +53,13 @@ class IndicatorsController extends Controller
 
     public function update(UpdateIndicatorsRequest $request, Indicators $indicators)
     {
-        $indicators->update($request->all());
-        return redirect()->route('admin.indicators')->with('msg', 'Ko`rsatgich muvaffaqiyatli yangilandi');
+        if ($request->count > $request->w_count) {
+            $indicators->update($request->all());
+            return redirect()->route('admin.indicators')->with('msg', 'Ko`rsatgich muvaffaqiyatli yangilandi');
+        }
+        else{
+            return redirect()->route('admin.indicators')->withErrors( 'Ko`rsatgichni ayollar soni umumiy sondan katta bolmasligi kerak.');
+        }
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mahalla;
 
 class RouteController extends Controller
 {
@@ -13,7 +14,10 @@ class RouteController extends Controller
 
     public function mahallalar()
     {
-        return view('user.mahallalar');
+        $mahallas = Mahalla::all()->except(1);
+        return view('user.mahallalar',[
+            'mahallas' => $mahallas,
+        ]);
     }
 
 

@@ -29,8 +29,13 @@ class EnvironmentController extends Controller
 
     public function store(StoreEnvironmentRequest $request)
     {
-        Environment::create($request->all());
-        return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli qo`shildi');
+        if ($request->count > $request->w_count+$request->y_count) {
+            Environment::create($request->all());
+            return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli qo`shildi');
+        }
+        else{
+            return redirect()->route('admin.environments')->withErrors( 'Muhitni ayollar soni va yoshlar sonini yig`indisi umumiy sondan katta bolmasligi kerak.');
+        }
     }
 
 
@@ -48,8 +53,14 @@ class EnvironmentController extends Controller
 
     public function update(UpdateEnvironmentRequest $request, Environment $environment)
     {
-        $environment->update($request->all());
-        return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli yangilandi');
+        if ($request->count > $request->w_count+$request->y_count) {
+            $environment->update($request->all());
+            return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli yangilandi');
+        }
+        else{
+            return redirect()->route('admin.environments')->withErrors( 'Muhitni ayollar soni va yoshlar sonini yig`indisi umumiy sondan katta bolmasligi kerak.');
+        }
+
     }
 
 

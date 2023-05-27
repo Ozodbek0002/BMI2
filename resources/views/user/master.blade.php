@@ -36,6 +36,8 @@
     <!-- Template Stylesheet -->
     <link href=" {{ asset('asset/css/style.css') }} " rel="stylesheet">
 
+
+
 </head>
 
 <body>
@@ -78,6 +80,7 @@
 <script src="{{ asset('asset/lib/waypoints/waypoints.min.js') }} "></script>
 <script src="{{ asset('asset/lib/counterup/counterup.min.js') }} "></script>
 <script src="{{ asset('asset/lib/owlcarousel/owl.carousel.min.js') }} "></script>
+
 
 <!-- Template Javascript -->
 <script src="{{ asset('asset/js/main.js') }} "></script>
