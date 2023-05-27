@@ -16,7 +16,7 @@ class InformationsSeeder extends Seeder
             'full_name'=>'Abdulazizov Abdulaziz',
             'phone'=>'998998998',
             'address'=>'Vatanbarvar ko`cha 1-uy',
-            'mahalla_id'=>1,
+            'mahalla_id'=>2,
         ]);
 
 

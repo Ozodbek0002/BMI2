@@ -1,56 +1,6 @@
 @extends('user.master')
 @section('content')
 
-    <!--Pages start-->
-    <div class="container">
-        <div class="row">
-            <span class="ml1 col">
-                <span class="text-wrapper">
-                  <h3 class="letters"> Tumanimzdagi barcha Mahallalar ! </h3>
-                </span>
-            </span>
-
-            {{--            --}}
-            {{--            <button type="button" class="bi bi-box-arrow-in-right btn btn-danger col-4"><a--}}
-            {{--                    class="text-light text-uppercase" href="admin.php"> Mahalla pasporti yig'ma jadvali</a>--}}
-            {{--            </button>--}}
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-
-            <script>// Wrap every letter in a span
-                var textWrapper = document.querySelector('.ml1 .letters');
-                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-                anime.timeline({loop: true})
-                    .add({
-                        targets: '.ml1 .letter',
-                        scale: [0.3, 1],
-                        opacity: [0, 1],
-                        translateZ: 0,
-                        easing: "easeOutExpo",
-                        duration: 600,
-                        delay: (el, i) => 70 * (i + 1)
-                    }).add({
-                    targets: '.ml1 .line',
-                    scaleX: [0, 1],
-                    opacity: [0.5, 1],
-                    easing: "easeOutExpo",
-                    duration: 700,
-                    offset: '-=875',
-                    delay: (el, i, l) => 80 * (l - i)
-                }).add({
-                    targets: '.ml1',
-                    opacity: 0,
-                    duration: 1000,
-                    easing: "easeOutExpo",
-                    delay: 1000
-                });
-            </script>
-
-        </div>
-    </div>
-    <!--pages end-->
-
 
 
 

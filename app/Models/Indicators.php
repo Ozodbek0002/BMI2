@@ -20,4 +20,6 @@ class Indicators extends Model
     {
         return $this->belongsTo(Mahalla::class);
     }
+
+
 }

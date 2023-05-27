@@ -48,9 +48,10 @@ class InformationsController extends Controller
     }
 
 
-    public function update(UpdateInformationsRequest $request, Informations $informations)
+    public function update(UpdateInformationsRequest $request, $id)
     {
-        $informations->update($request->all());
+        $information = Informations::find($id);
+        $information->update($request->all());
         return redirect()->route('admin.informations')->with('msg', 'Ma`lumotlar muvaffaqiyatli yangilandi');
 
     }

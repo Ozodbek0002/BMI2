@@ -18,10 +18,6 @@ class Mahalla extends Model
         return $this->hasMany(User::class);
     }
 
-    public function village()
-    {
-        return $this->belongsTo(Village::class);
-    }
 
     public function informations()
     {
@@ -37,6 +33,10 @@ class Mahalla extends Model
     public function statuses()
     {
         return $this->hasMany(SocialStatus::class);
+    }
+
+    public function indicators(){
+        return $this->hasMany(Indicators::class);
     }
 
     public function environments()
