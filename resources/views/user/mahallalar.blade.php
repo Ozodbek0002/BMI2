@@ -66,8 +66,7 @@
                     <div class="row g-0 mb-3">
                         <div class="col-md-12" data-wow-delay="0.2s">
                             @foreach($mahallas as $mahalla)
-                                <a href="">
-
+                                <a href="{{ route('passport',$mahalla->id) }}">
                                     <h4 class="mb-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                              viewBox="0 0 24 24">
