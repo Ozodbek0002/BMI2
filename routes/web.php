@@ -18,12 +18,16 @@ use App\Http\Controllers\{
 };
 
 
-Route::get('/', [RouteController::class,'main'])->name('main');
-Route::get('/mahallalar', [RouteController::class,'mahallalar'])->name('mahallalar');
-Route::get('/passport/{id}', [RouteController::class,'passport'])->name('passport');
-Route::get('/report/{id}', [RouteController::class,'report'])->name('report');
+//User
+Route::get('/', [RouteController::class,'main'])->name('main'); // asosiy sahifa
+Route::get('/mahallalar', [RouteController::class,'mahallalar'])->name('mahallalar'); // mahallalar ro'yxati
+Route::get('/passport/{id}', [RouteController::class,'passport'])->name('passport'); // mahallaning passporti
+Route::get('/report/{id}', [RouteController::class,'report'])->name('report'); // mahallaning hisoboti
 
 
+
+
+//Admin
 Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
 Route::get('/', [AdminController::class,'dashboard'])->name('dashboard');
 Route::resource('mahallas', MahallaController::class)->name('index', 'mahallas');
@@ -48,11 +52,5 @@ Route::post('SearchEnvironments',[SearchController::class, 'SearchEnvironments']
 
 
 
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';

@@ -25,7 +25,7 @@
                 <img class="w-100" src="{{ asset('asset/img/carousel-1.jpg') }}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
-                        <h1 class="display-1 text-white mb-md-4 animated zoomIn text-uppercase">  Tumanimizdagi barcha mahallar </h1>
+                        <h5 class="display-1 text-white mb-md-5 animated zoomIn text-uppercase">  Tumandagi barcha mahallalar elektron pasporti </h5>
                     </div>
                 </div>
             </div>

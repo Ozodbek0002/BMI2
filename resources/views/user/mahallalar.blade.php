@@ -11,7 +11,7 @@
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
                         <h5 class="fw-bold text-primary text-uppercase">Ma'lumot</h5>
-                        <h1 class="mb-0"> Tumandagi Mahallalar </h1>
+                        <h1 class="mb-0"> Gurlan tumanidagi mahallalar </h1>
                     </div>
                     <div class="row g-0 mb-3">
                         <div class="col-md-12" data-wow-delay="0.2s">

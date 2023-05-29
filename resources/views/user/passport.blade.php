@@ -15,9 +15,17 @@
 
 
                 <button type="button" class="bi bi-box-arrow-in-right btn btn-danger col-4"><a
-                        class="text-light text-uppercase" href="{{route('report',$mahalla->id)}}"> Mahalla pasporti
+                        class="text-light text-uppercase" href="/"> Mahalla pasporti
                         yig'ma jadvali </a>
                 </button>
+
+{{--                 <button type="button" class="bi bi-box-arrow-in-right btn btn-danger col-4"><a--}}
+{{--                        class="text-light text-uppercase" href="{{route('report',$mahalla->id)}}"> Mahalla pasporti--}}
+{{--                        yig'ma jadvali </a>--}}
+{{--                </button>--}}
+{{--                --}}
+{{--                --}}
+
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
@@ -180,7 +188,7 @@
 
         <table class="table table-bordered">
             <h4 class="text-center">
-                Qishloq xo'jaligi bilan bog'liq ko'rsatkichlar
+               Ijtimoiy ma'naviy muhiti
             </h4>
             <thead class="thead btn-info">
             <tr>

@@ -46,7 +46,7 @@
                             <div class="modal-content container">
 
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-3" id="exampleModalLabel"> Yangi Malumot </h1>
+                                    <h1 class="modal-title fs-3" id="exampleModalLabel"> Yangi Hodim </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
@@ -81,7 +81,6 @@
 
                                         {{--  Roles--}}
                                     <input type="hidden" name="role_id" value="2">
-
                                     <br>
 
                                     {{-- Name--}}
@@ -99,7 +98,7 @@
 
                                     {{--Email--}}
                                     <div class="form-group ">
-                                        <label for=""> Manzili </label>
+                                        <label for=""> Email </label>
                                         <input type="email" name="email" value="{{old('email')}}"
                                                class="form-control">
                                         @error('email')
