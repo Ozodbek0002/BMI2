@@ -188,26 +188,16 @@
                                 <td class="col-2">
 
 
-                                    @if($user->id != 1)
-
-                                        <a class="btn btn-success btn-sm"
-                                           href="{{ route('admin.users.show',$user->id) }}">
-                                            <span class="btn-label">
-                                                  <i class="bx bxs-show"></i>
-                                            </span>
-                                        </a>
-
-                                    @endif
-
-
                                     @if( auth()->user()->id ==1 )
 
-                                        <a class="btn btn-warning btn-sm"
-                                           href="{{ route('admin.users.edit',$user->id) }}">
-                                            <span class="btn-label">
-                                                <i class="bx bx-pen"></i>
-                                            </span>
-                                        </a>
+                                        <button data-bs-toggle="modal" data-bs-target="#editModal{{$user->id}}"
+                                                type="button" class="btn btn-warning  btn-sm">
+                                                <span class="btn-label">
+                                                    <i class="bx bx-pen"></i>
+                                                </span>
+                                        </button>
+
+
 
 
                                         @if($user->id!=1)
@@ -224,6 +214,121 @@
                                     @endif
 
 
+
+                                    {{--                                    Edit Modals--}}
+                                    <div class="modal fade" id="editModal{{$user->id}}" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content container">
+
+
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-3" id="exampleModalLabel"> Hodimni
+                                                        tahrirlang </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+
+                                                <form action="{{route('admin.users.update',$user->id)}}"
+                                                      method="POST"
+                                                      accept-charset="UTF-8" method="post"
+                                                      enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+
+
+                                                    <br>
+
+
+                                                    {{--  Mahallas--}}
+                                                    <div class="form-group ">
+                                                        <label> Mahallasini tanlang </label>
+                                                        <select name="mahalla_id" id="selectedDepartment"
+                                                                class="form-control">
+
+                                                            @foreach($mahallas as $c)
+                                                                @if($c->id == $user->mahalla->id)
+                                                                    <option style="color: blue"
+                                                                            value="{{$c->id}}">{{$c->name}}</option>
+                                                                @else
+                                                                    <option value="{{$c->id}}">{{$c->name}}</option>
+                                                                @endif
+                                                            @endforeach
+
+                                                        </select>
+                                                        @error('mahalla_id')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                    <br>
+
+                                                    {{--  Roles--}}
+                                                    <input type="hidden" name="role_id" value="2">
+
+
+                                                    {{-- Name--}}
+                                                    <div class="form-group ">
+                                                        <label for=""> F.I.Sh </label>
+                                                        <input type="text" name="name" value="{{ $user->name  }}"
+                                                               class="form-control">
+                                                        @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <br>
+
+
+                                                    {{--Phone --}}
+                                                    <div class="form-group ">
+                                                        <label for="author">Telefon raqami</label>
+                                                        <input type="number" value="{{ $user->phone  }}"
+                                                               class="form-control" name="phone">
+                                                        @error('phone')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <br>
+
+
+                                                    {{--Email--}}
+                                                    <div class="form-group ">
+                                                        <label for=""> Email </label>
+                                                        <input type="email" name="email" value="{{ $user->email }}"
+                                                               class="form-control">
+                                                        @error('email')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <br>
+
+
+                                                    {{--                        Password--}}
+                                                    <div class="form-group ">
+                                                        <label for="author"> Yangi parol </label>
+                                                        <input type="password" value=""
+                                                               class="form-control"
+                                                               name="password">
+                                                    </div>
+
+
+                                                    <br>
+                                                    <br>
+
+                                                    <button type="submit" id="alert" class="btn btn-primary ">Saqlash
+                                                    </button>
+                                                    <input type="reset" class="btn btn-danger" value="Tozalash">
+
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
 
 
                                     {{-- Delete  Modals--}}

@@ -11,8 +11,14 @@ class IndicatorsController extends Controller
 
     public function index()
     {
-        $indicators = Indicators::paginate(10);
-        $mahallas = Mahalla::all()->except(1);
+        if (auth()->user()->id == 1) {
+            $indicators = Indicators::paginate(10);
+            $mahallas = Mahalla::all()->except(1);
+        }
+        else{
+            $indicators = Indicators::where('mahalla_id', auth()->user()->mahalla_id)->paginate(10);
+            $mahallas = Mahalla::where('id', auth()->user()->mahalla_id)->get();
+        }
         return view('admin.indicators.index', [
             'indicators'=> $indicators,
             'mahallas' => $mahallas,

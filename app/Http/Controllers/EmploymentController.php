@@ -12,12 +12,18 @@ class EmploymentController extends Controller
 
     public function index()
     {
-        $employments = Employment::paginate();
-        $mahallas = Mahalla::all()->except(1);
+        if (auth()->user()->id == 1) {
+            $employments = Employment::paginate();
+            $mahallas = Mahalla::all()->except(1);
+
+        } else {
+            $employments = Employment::where('mahalla_id', auth()->user()->mahalla_id)->paginate();
+            $mahallas = Mahalla::where('id', auth()->user()->mahalla_id)->get();
+        }
 
         return view('admin.employments.index', [
-            'employments'=>$employments,
-            'mahallas'=>$mahallas,
+            'employments' => $employments,
+            'mahallas' => $mahallas,
         ]);
     }
 
@@ -53,9 +59,7 @@ class EmploymentController extends Controller
         return redirect()->route('admin.employments')->with('msg', 'Ma`lumotlar muvaffaqiyatli yangilandi');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Employment $employment)
     {
         $employment->delete();

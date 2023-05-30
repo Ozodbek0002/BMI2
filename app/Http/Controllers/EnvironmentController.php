@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ { Environment, Mahalla };
+use App\Models\ {Environment, Mahalla};
 use App\Http\Requests\StoreEnvironmentRequest;
 use App\Http\Requests\UpdateEnvironmentRequest;
 
@@ -11,11 +11,15 @@ class EnvironmentController extends Controller
 
     public function index()
     {
-        $environments = Environment::paginate(10);
-        $mahallas = Mahalla::all()->except(1);
-
+        if (auth()->user()->id == 1) {
+            $environments = Environment::paginate(10);
+            $mahallas = Mahalla::all()->except(1);
+        } else {
+            $environments = Environment::where('mahalla_id', auth()->user()->mahalla_id)->paginate(10);
+            $mahallas = Mahalla::where('id', auth()->user()->mahalla_id)->get();
+        }
         return view('admin.environments.index', [
-            'environments'=>$environments,
+            'environments' => $environments,
             'mahallas' => $mahallas,
         ]);
     }
@@ -29,12 +33,11 @@ class EnvironmentController extends Controller
 
     public function store(StoreEnvironmentRequest $request)
     {
-        if ($request->count > $request->w_count+$request->y_count) {
+        if ($request->count > $request->w_count + $request->y_count) {
             Environment::create($request->all());
             return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli qo`shildi');
-        }
-        else{
-            return redirect()->route('admin.environments')->withErrors( 'Muhitni ayollar soni va yoshlar sonini yig`indisi umumiy sondan katta bolmasligi kerak.');
+        } else {
+            return redirect()->route('admin.environments')->withErrors('Muhitni ayollar soni va yoshlar sonini yig`indisi umumiy sondan katta bolmasligi kerak.');
         }
     }
 
@@ -53,12 +56,11 @@ class EnvironmentController extends Controller
 
     public function update(UpdateEnvironmentRequest $request, Environment $environment)
     {
-        if ($request->count > $request->w_count+$request->y_count) {
+        if ($request->count > $request->w_count + $request->y_count) {
             $environment->update($request->all());
             return redirect()->route('admin.environments')->with('msg', 'Muhit muvaffaqiyatli yangilandi');
-        }
-        else{
-            return redirect()->route('admin.environments')->withErrors( 'Muhitni ayollar soni va yoshlar sonini yig`indisi umumiy sondan katta bolmasligi kerak.');
+        } else {
+            return redirect()->route('admin.environments')->withErrors('Muhitni ayollar soni va yoshlar sonini yig`indisi umumiy sondan katta bolmasligi kerak.');
         }
 
     }

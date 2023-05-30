@@ -83,7 +83,6 @@ class UserController extends Controller
             'role_id' => 'required',
             'mahalla_id' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => ['required', 'min:8',],
             'phone' => 'required|digits:9',
         ], [
             'name.required' => 'Iltimos hodim ism familiyasini yozing .',
@@ -91,7 +90,6 @@ class UserController extends Controller
             'mahalla_id.required' => 'Iltimos hodim mahallasini tanlang.',
             'email.required' => 'Iltimos emailni toliq yozing.',
             'email.unique:users' => 'Bu email allaqachon ro`yhatdan o`tgan ',
-            'password.required' => 'Iltimos parolni  yozing.',
             'phone.required' => 'Iltimos hodim telefon raqamini yozing.',
         ]);
 
@@ -103,7 +101,7 @@ class UserController extends Controller
         $data->email = $user['email'];
 
         if ($request->password != null) {
-            $user->password = Hash::make($request->password);
+            $data->password = Hash::make($request->password);
         }
 
         $data->save();
@@ -111,11 +109,11 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('admin.users')->with('msg', 'Hodim muvaffaqiyatli o`chirildi.');
     }
 }

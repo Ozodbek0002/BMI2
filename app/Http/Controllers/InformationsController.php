@@ -7,18 +7,27 @@ use App\Models\Mahalla;
 use App\Http\Requests\StoreInformationsRequest;
 use App\Http\Requests\UpdateInformationsRequest;
 
+
 class InformationsController extends Controller
 {
 
     public function index()
     {
-        $informations = Informations::paginate(10);
-        $mahallas = Mahalla::all()->except(1);
+        if (auth()->user()->id == 1) {
+            $informations = Informations::paginate(10);
+            $mahallas = Mahalla::all()->except(1);
+
+        } else {
+            $informations = Informations::where('mahalla_id', auth()->user()->mahalla_id)->paginate(10);
+            $mahallas = Mahalla::where('id', auth()->user()->mahalla_id)->get();
+        }
+
 
         return view('admin.informations.index', [
-            'informations'=>$informations,
-            'mahallas'=>$mahallas,
+            'informations' => $informations,
+            'mahallas' => $mahallas,
         ]);
+
     }
 
 

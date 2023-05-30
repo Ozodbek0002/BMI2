@@ -12,12 +12,17 @@ class SocialStatusController extends Controller
 
     public function index()
     {
-        $statuses = SocialStatus::paginate(10);
-        $mahallas = Mahalla::all()->except(1);
+        if (auth()->user()->id == 1) {
+            $statuses = SocialStatus::paginate(10);
+            $mahallas = Mahalla::all()->except(1);
 
+        } else {
+            $statuses = SocialStatus::where('mahalla_id', auth()->user()->mahalla_id)->paginate(10);
+            $mahallas = Mahalla::where('id', auth()->user()->mahalla_id)->get();
+        }
         return view('admin.statuses.index', [
-            'statuses'=>$statuses,
-            'mahallas'=>$mahallas,
+            'statuses' => $statuses,
+            'mahallas' => $mahallas,
         ]);
 
     }
@@ -55,7 +60,7 @@ class SocialStatusController extends Controller
     }
 
 
-    public function destroy( $id )
+    public function destroy($id)
     {
 
         SocialStatus::find($id)->delete();
