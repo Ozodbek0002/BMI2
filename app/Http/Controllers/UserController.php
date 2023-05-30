@@ -78,27 +78,11 @@ class UserController extends Controller
     {
         $data = User::find($id);
 
-        $user = $request->validate([
-            'name' => 'required',
-            'role_id' => 'required',
-            'mahalla_id' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required|digits:9',
-        ], [
-            'name.required' => 'Iltimos hodim ism familiyasini yozing .',
-            'role_id.required' => 'Iltimos hodim lavozimini tanlang.',
-            'mahalla_id.required' => 'Iltimos hodim mahallasini tanlang.',
-            'email.required' => 'Iltimos emailni toliq yozing.',
-            'email.unique:users' => 'Bu email allaqachon ro`yhatdan o`tgan ',
-            'phone.required' => 'Iltimos hodim telefon raqamini yozing.',
-        ]);
-
-
-        $data->name = $user['name'];
-        $data->role_id = $user['role_id'];
-        $data->mahalla_id = $user['mahalla_id'];
-        $data->phone = $user['phone'];
-        $data->email = $user['email'];
+        $data->name = $request['name'];
+        $data->role_id = $request['role_id'];
+        $data->mahalla_id = $request['mahalla_id'];
+        $data->phone = $request['phone'];
+        $data->email = $request['email'];
 
         if ($request->password != null) {
             $data->password = Hash::make($request->password);
