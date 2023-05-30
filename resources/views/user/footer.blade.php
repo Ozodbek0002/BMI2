@@ -34,15 +34,15 @@
                         </div>
                     </div>
 
-{{--                    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">--}}
-{{--                        <div class="section-title section-title-sm position-relative pb-3 mb-4">--}}
-{{--                            <h3 class="text-light mb-0">Ommabop havolalar</h3>--}}
-{{--                        </div>--}}
-{{--                        <div class="link-animated d-flex flex-column justify-content-start">--}}
-{{--                            <a class="text-light mb-2" href="index.php"><i class="bi bi-arrow-right text-primary me-2"></i>Bosh sahifa</a>--}}
-{{--                            <a class="text-light" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Biz bilan bog'lanish</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="text-light mb-0"> Ommabop havolalar </h3>
+                        </div>
+                        <div class="link-animated d-flex flex-column justify-content-start">
+                            <a href=""> <img width="40" height="40" src="https://img.icons8.com/3d-fluency/94/telegram.png" alt="telegram"/> Telegram </a>
+                            <a href=""> <img width="40" height="40" src="https://img.icons8.com/color/48/instagram-new--v1.png" alt="instagram-new--v1"/> Instagram </a>
+                        </div>
+                    </div>
 
 
                 </div>
