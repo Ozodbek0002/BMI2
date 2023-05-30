@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Mahalla;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,8 +15,8 @@ class UserController extends Controller
         $users = User::paginate(10);
         $mahallas = Mahalla::all()->except(1);
         return view('admin.users.index', [
-            'users'=>$users,
-            'mahallas'=>$mahallas,
+            'users' => $users,
+            'mahallas' => $mahallas,
         ]);
     }
 
@@ -24,36 +26,89 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $data = new User();
+
+        $user = $request->validate([
+            'name' => 'required',
+            'role_id' => 'required',
+            'mahalla_id' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => ['required', 'min:8',],
+            'phone' => 'required|digits:9',
+        ], [
+            'name.required' => 'Iltimos hodim ism familiyasini yozing .',
+            'role_id.required' => 'Iltimos hodim lavozimini tanlang.',
+            'mahalla_id.required' => 'Iltimos hodim mahallasini tanlang.',
+            'email.required' => 'Iltimos emailni toliq yozing.',
+            'email.unique:users' => 'Bu email allaqachon ro`yhatdan o`tgan ',
+            'password.required' => 'Iltimos parolni  yozing.',
+            'phone.required' => 'Iltimos hodim telefon raqamini yozing.',
+        ]);
+
+        $data->name = $user['name'];
+        $data->role_id = $user['role_id'];
+        $data->mahalla_id = $user['mahalla_id'];
+        $data->email = $user['email'];
+        $data->password = Hash::make($user['password']);
+        $data->phone = $user['phone'];
+
+
+        $data->save();
+
+        return redirect()->route('admin.users')->with('msg', 'Hodim muvaffaqiyatli qo`shildi.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $data = User::find($id);
+
+        $user = $request->validate([
+            'name' => 'required',
+            'role_id' => 'required',
+            'mahalla_id' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => ['required', 'min:8',],
+            'phone' => 'required|digits:9',
+        ], [
+            'name.required' => 'Iltimos hodim ism familiyasini yozing .',
+            'role_id.required' => 'Iltimos hodim lavozimini tanlang.',
+            'mahalla_id.required' => 'Iltimos hodim mahallasini tanlang.',
+            'email.required' => 'Iltimos emailni toliq yozing.',
+            'email.unique:users' => 'Bu email allaqachon ro`yhatdan o`tgan ',
+            'password.required' => 'Iltimos parolni  yozing.',
+            'phone.required' => 'Iltimos hodim telefon raqamini yozing.',
+        ]);
+
+
+        $data->name = $user['name'];
+        $data->role_id = $user['role_id'];
+        $data->mahalla_id = $user['mahalla_id'];
+        $data->phone = $user['phone'];
+        $data->email = $user['email'];
+
+        if ($request->password != null) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $data->save();
+        return redirect()->route('admin.users')->with('msg', 'Hodim muvaffaqiyatli tahrirlandi.');
+
     }
 
     /**

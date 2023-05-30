@@ -25,7 +25,6 @@
                     </div>
 
 
-
                     <div class="col-md-3">
                         <a class="btn ">
                             <button data-bs-toggle="modal" data-bs-target="#addModal"
@@ -79,9 +78,9 @@
 
                                     <br>
 
-                                        {{--  Roles--}}
+                                    {{--  Roles--}}
                                     <input type="hidden" name="role_id" value="2">
-                                    <br>
+
 
                                     {{-- Name--}}
                                     <div class="form-group ">
@@ -89,6 +88,18 @@
                                         <input type="text" name="name" value="{{old('name')}}"
                                                class="form-control">
                                         @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <br>
+
+
+                                    {{--Phone --}}
+                                    <div class="form-group ">
+                                        <label for="author">Telefon raqami</label>
+                                        <input type="number" value="{{old('phone')}}" class="form-control" name="phone">
+                                        @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -106,18 +117,18 @@
                                         @enderror
                                     </div>
 
-
                                     <br>
-                                    {{--Phone--}}
 
+
+                                    {{--                        Password--}}
                                     <div class="form-group ">
-                                        <label for=""> Raqami </label>
-                                        <input type="text" name="phone" value="{{old('phone')}}" class="form-control">
-                                        @error('phone')
+                                        <label for="author">Paroli</label>
+                                        <input type="password" value="{{old('password')}}" class="form-control"
+                                               name="password">
+                                        @error('password')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-
 
                                     <br>
                                     <br>
@@ -125,6 +136,7 @@
                                     <button type="submit" id="alert" class="btn btn-primary ">Saqlash</button>
                                     <input type="reset" class="btn btn-danger" value="Tozalash">
 
+                                    <br>
 
                                 </form>
 

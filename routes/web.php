@@ -25,8 +25,6 @@ Route::get('/passport/{id}', [RouteController::class,'passport'])->name('passpor
 Route::get('/report/{id}', [RouteController::class,'report'])->name('report'); // mahallaning hisoboti
 
 
-
-
 //Admin
 Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
 Route::get('/', [AdminController::class,'dashboard'])->name('dashboard');
@@ -39,6 +37,7 @@ Route::resource('indicators', IndicatorsController::class)->name('index', 'indic
 Route::resource('environments', EnvironmentController::class)->name('index', 'environments');
 
 
+// Search
 Route::post('SearchUsers',[SearchController::class, 'SearchUsers'])->name('SearchUsers');
 Route::post('SearchMahallas',[SearchController::class, 'SearchMahallas'])->name('SearchMahallas');
 Route::post('SearchInformation',[SearchController::class, 'SearchInformation'])->name('SearchInformation');
