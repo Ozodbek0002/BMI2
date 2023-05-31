@@ -84,7 +84,7 @@
         <div class="layout-page">
 
             <!-- Navbar -->
-            @include('Admin.navbar')
+            @include('admin.navbar')
             <!-- / Navbar -->
 
 
