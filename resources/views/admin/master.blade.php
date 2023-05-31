@@ -77,7 +77,7 @@
     <div class="layout-container">
 
         <!-- Menu -->
-        @include('Admin.sidebar')
+        @include('admin.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
