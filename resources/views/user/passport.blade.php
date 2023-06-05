@@ -159,7 +159,7 @@
 
         <table class="table table-bordered">
             <h4 class="text-center">
-                Qishloq xo'jaligi bilan bog'liq ko'rsatkichlar
+                Demografik ko'rsatkichlar
             </h4>
             <thead class="thead btn-info">
             <tr>
